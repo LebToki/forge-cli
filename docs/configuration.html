@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Configuration - FORGE Documentation</title>
+		<style>
+			/* Same styles as above */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Inter', sans-serif;
+				background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+				color: #fff;
+				line-height: 1.6;
+			}
+
+			.glass-nav {
+				background: rgba(255, 255, 255, 0.05);
+				backdrop-filter: blur(10px);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				position: sticky;
+				top: 0;
+				z-index: 100;
+			}
+
+			.nav-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 1rem 2rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.logo {
+				font-size: 1.5rem;
+				font-weight: bold;
+				background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			.nav-links a {
+				color: rgba(255, 255, 255, 0.8);
+				text-decoration: none;
+				margin-left: 2rem;
+				font-size: 0.9rem;
+			}
+
+			.container {
+				max-width: 1000px;
+				margin: 4rem auto;
+				padding: 0 2rem;
+			}
+
+			h1 {
+				font-size: 2.5rem;
+				margin-bottom: 2rem;
+				background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			.config-section {
+				background: rgba(255, 255, 255, 0.03);
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.05);
+				border-radius: 20px;
+				padding: 2rem;
+				margin-bottom: 2rem;
+			}
+
+			h2 {
+				color: #8B5CF6;
+				margin-bottom: 1rem;
+			}
+
+			h3 {
+				color: #3B82F6;
+				margin: 1.5rem 0 0.5rem;
+			}
+
+			code {
+				background: rgba(0, 0, 0, 0.3);
+				padding: 0.2rem 0.4rem;
+				border-radius: 4px;
+				font-family: 'Fira Code', monospace;
+				color: #EC4899;
+			}
+
+			pre {
+				background: rgba(0, 0, 0, 0.3);
+				padding: 1rem;
+				border-radius: 8px;
+				overflow-x: auto;
+				margin: 1rem 0;
+			}
+
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 1rem 0;
+			}
+
+			th,
+			td {
+				padding: 0.75rem;
+				text-align: left;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+			}
+
+			th {
+				color: #8B5CF6;
+				font-weight: 500;
+			}
+
+			.footer {
+				background: rgba(0, 0, 0, 0.3);
+				backdrop-filter: blur(10px);
+				border-top: 1px solid rgba(255, 255, 255, 0.05);
+				padding: 2rem;
+				text-align: center;
+				color: rgba(255, 255, 255, 0.5);
+			}
+
+			.footer a {
+				color: #8B5CF6;
+				text-decoration: none;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="glass-nav">
+			<div class="nav-container">
+				<div class="logo">🔥 FORGE</div>
+				<div class="nav-links">
+					<a href="index.html">Home</a>
+					<a href="getting-started.html">Getting Started</a>
+					<a href="configuration.html">Configuration</a>
+					<a href="github-integration.html">GitHub</a>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container">
+			<h1>Configuration</h1>
+
+			<div class="config-section">
+				<h2>Configuration Methods</h2>
+				<p>FORGE supports multiple configuration methods (checked in order):</p>
+				<ol style="margin-left: 1.5rem; margin-top: 1rem;">
+					<li>Command-line flags (highest priority)</li>
+					<li>Environment variables</li>
+					<li>Configuration file (~/.forge/config.json)</li>
+					<li>System keychain (for API keys)</li>
+					<li>Default values</li>
+				</ol>
+			</div>
+
+			<div class="config-section">
+				<h2>Environment Variables</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Variable</th>
+							<th>Description</th>
+							<th>Required</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<code>DEEPSEEK_API_KEY</code>
+							</td>
+							<td>Your DeepSeek API key</td>
+							<td>Yes</td>
+						</tr>
+						<tr>
+							<td>
+								<code>GITHUB_TOKEN</code>
+							</td>
+							<td>GitHub personal access token</td>
+							<td>For GitHub features</td>
+						</tr>
+						<tr>
+							<td>
+								<code>FORGE_CONFIG_DIR</code>
+							</td>
+							<td>Custom config directory</td>
+							<td>No</td>
+						</tr>
+						<tr>
+							<td>
+								<code>FORGE_THEME</code>
+							</td>
+							<td>UI theme (dark/light/glass)</td>
+							<td>No</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="config-section">
+				<h2>Configuration Commands</h2>
+
+				<h3>View all config</h3>
+				<pre><code>forge config list</code></pre>
+
+				<h3>Set a value</h3>
+				<pre><code>forge config set deepseek.api_key sk-xxx</code></pre>
+
+				<h3>Get a value</h3>
+				<pre><code>forge config get deepseek.api_key</code></pre>
+
+				<h3>Delete a value</h3>
+				<pre><code>forge config delete deepseek.api_key</code></pre>
+			</div>
+
+			<div class="config-section">
+				<h2>Configuration File Example</h2>
+				<p>Located at
+					<code>~/.forge/config.json</code>
+				</p>
+				<pre><code>{
+  "deepseek": {
+    "api_key": "sk-xxx",
+    "model": "deepseek-chat",
+    "temperature": 0.7
+  },
+  "github": {
+    "token": "ghp_xxx",
+    "default_remote": "origin"
+  },
+  "ui": {
+    "theme": "glass",
+    "animations": true,
+    "glass_intensity": 0.25
+  },
+  "php": {
+    "default_version": "8.2",
+    "memory_limit": "256M",
+    "timeout": 30
+  },
+  "database": {
+    "connections": {
+      "default": {
+        "host": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "",
+        "database": "forge"
+      }
+    }
+  }
+}</code></pre>
+			</div>
+
+			<div class="config-section">
+				<h2>Security & Key Storage</h2>
+				<p>FORGE stores sensitive data securely:</p>
+				<ul style="margin-left: 1.5rem; margin-top: 1rem;">
+					<li>
+						<strong>API Keys:</strong>
+						Stored in system keychain (macOS Keychain, Windows Credential Manager, libsecret on Linux)</li>
+					<li>
+						<strong>Config file:</strong>
+						Stored in user home directory with 600 permissions</li>
+					<li>
+						<strong>Environment variables:</strong>
+						Never persisted to disk</li>
+					<li>
+						<strong>Tokens:</strong>
+						Encrypted at rest</li>
+				</ul>
+				<div class="note" style="background: rgba(139, 92, 246, 0.1); border-left: 4px solid #8B5CF6; padding: 1rem; margin-top: 1rem;">
+					<strong>🔒 Best Practice:</strong>
+					Use environment variables for CI/CD, keychain for local development.
+				</div>
+			</div>
+		</div>
+
+		<footer class="footer">
+			<p>
+				Made with ❤️ by
+				<a href="https://github.com/LebToki">Tarek Tarabichi</a>
+				from
+				<a href="https://2tinteractive.com">2TInteractive</a>
+				| 
+								            Powered by
+				<a href="https://deepseek.com">DeepSeek AI</a>
+			</p>
+		</footer>
+	</body>
+</html>

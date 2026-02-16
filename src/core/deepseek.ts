@@ -1,5 +1,10 @@
 import OpenAI from 'openai';
 
+type ChatMessage = {
+  role: 'system' | 'user' | 'assistant';
+  content: string;
+};
+
 export class DeepSeekClient {
   private client: OpenAI;
   
@@ -11,7 +16,7 @@ export class DeepSeekClient {
   }
   
   async ask(question: string, files?: string[]): Promise<string> {
-    const messages: OpenAI.Chat.ChatMessage[] = [
+    const messages: ChatMessage[] = [
       {
         role: 'system',
         content: 'You are FORGE, an AI coding assistant. Help with code, answer questions, and provide expert guidance.'
@@ -40,7 +45,7 @@ export class DeepSeekClient {
   }
   
   async *streamAsk(question: string, files?: string[]): AsyncGenerator<string> {
-    const messages: OpenAI.Chat.ChatMessage[] = [
+    const messages: ChatMessage[] = [
       {
         role: 'system',
         content: 'You are FORGE, an AI coding assistant. Help with code, answer questions, and provide expert guidance.'
@@ -75,7 +80,7 @@ export class DeepSeekClient {
   }
   
   async generate(prompt: string): Promise<string> {
-    const messages: OpenAI.Chat.ChatMessage[] = [
+    const messages: ChatMessage[] = [
       {
         role: 'system',
         content: 'You are FORGE, an expert code generator. Generate clean, well-documented code based on the request.'
@@ -104,7 +109,7 @@ export class DeepSeekClient {
       output: process.stdout
     });
     
-    const history: OpenAI.Chat.ChatMessage[] = [
+    const history: ChatMessage[] = [
       {
         role: 'system',
         content: 'You are FORGE, an AI coding assistant. Help with code, answer questions, and provide expert guidance.'

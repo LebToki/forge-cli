@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>API Reference - FORGE Documentation</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Inter', sans-serif;
+				background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+				color: #fff;
+				line-height: 1.6;
+			}
+
+			.glass-nav {
+				background: rgba(255, 255, 255, 0.05);
+				backdrop-filter: blur(10px);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				position: sticky;
+				top: 0;
+				z-index: 100;
+			}
+
+			.nav-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 1rem 2rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.logo {
+				font-size: 1.5rem;
+				font-weight: bold;
+				background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			.nav-links a {
+				color: rgba(255, 255, 255, 0.8);
+				text-decoration: none;
+				margin-left: 2rem;
+				font-size: 0.9rem;
+				transition: color 0.3s;
+			}
+
+			.nav-links a:hover {
+				color: #8B5CF6;
+			}
+
+			.container {
+				max-width: 1200px;
+				margin: 4rem auto;
+				padding: 0 2rem;
+			}
+
+			h1 {
+				font-size: 2.5rem;
+				margin-bottom: 1rem;
+				background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			h2 {
+				font-size: 1.8rem;
+				margin: 2rem 0 1rem;
+				color: #8B5CF6;
+			}
+
+			h3 {
+				font-size: 1.3rem;
+				margin: 1.5rem 0 0.5rem;
+				color: #3B82F6;
+			}
+
+			p {
+				margin-bottom: 1rem;
+				color: rgba(255, 255, 255, 0.8);
+			}
+
+			code {
+				background: rgba(0, 0, 0, 0.3);
+				padding: 0.2rem 0.4rem;
+				border-radius: 4px;
+				font-family: 'Fira Code', monospace;
+				color: #EC4899;
+			}
+
+			pre {
+				background: rgba(0, 0, 0, 0.3);
+				padding: 1rem;
+				border-radius: 8px;
+				overflow-x: auto;
+				margin: 1rem 0;
+				border: 1px solid rgba(255, 255, 255, 0.05);
+			}
+
+			.api-section {
+				background: rgba(255, 255, 255, 0.03);
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.05);
+				border-radius: 20px;
+				padding: 2rem;
+				margin-bottom: 2rem;
+			}
+
+			.api-method {
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				padding: 1.5rem 0;
+			}
+
+			.api-method:last-child {
+				border-bottom: none;
+			}
+
+			.method-name {
+				font-size: 1.2rem;
+				font-weight: bold;
+				color: #8B5CF6;
+				margin-bottom: 0.5rem;
+			}
+
+			.method-signature {
+				background: rgba(0, 0, 0, 0.2);
+				padding: 0.5rem;
+				border-radius: 4px;
+				font-family: monospace;
+				margin-bottom: 0.5rem;
+			}
+
+			.param-table {
+				width: 100%;
+				margin: 1rem 0;
+				border-collapse: collapse;
+			}
+
+			.param-table th {
+				text-align: left;
+				color: #8B5CF6;
+				padding: 0.5rem;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+			}
+
+			.param-table td {
+				padding: 0.5rem;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+			}
+
+			.badge {
+				display: inline-block;
+				background: rgba(139, 92, 246, 0.2);
+				border: 1px solid rgba(139, 92, 246, 0.3);
+				border-radius: 20px;
+				padding: 0.2rem 0.8rem;
+				font-size: 0.8rem;
+				margin-right: 0.5rem;
+			}
+
+			.return-type {
+				color: #10B981;
+			}
+
+			.footer {
+				background: rgba(0, 0, 0, 0.3);
+				backdrop-filter: blur(10px);
+				border-top: 1px solid rgba(255, 255, 255, 0.05);
+				padding: 2rem;
+				text-align: center;
+				color: rgba(255, 255, 255, 0.5);
+				margin-top: 4rem;
+			}
+
+			.footer a {
+				color: #8B5CF6;
+				text-decoration: none;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="glass-nav">
+			<div class="nav-container">
+				<div class="logo">🔥 FORGE</div>
+				<div class="nav-links">
+					<a href="index.html">Home</a>
+					<a href="getting-started.html">Getting Started</a>
+					<a href="configuration.html">Config</a>
+					<a href="github-integration.html">GitHub</a>
+					<a href="tool-reference.html">Tools</a>
+					<a href="examples.html">Examples</a>
+					<a href="https://github.com/LebToki/forge-cli">GitHub</a>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container">
+			<h1>API Reference</h1>
+			<p>Complete API documentation for FORGE's programmatic interface.</p>
+
+			<div class="api-section">
+				<h2>Core API</h2>
+
+				<div class="api-method">
+					<div class="method-name">initialize(config?: ForgeConfig): Promise&lt;ForgeInstance&gt;</div>
+					<div class="method-signature">forge.initialize({ apiKey: 'sk-xxx', cwd: '/project' })</div>
+					<p>Initialize FORGE with configuration options.</p>
+
+					<table class="param-table">
+						<tr>
+							<th>Parameter</th>
+							<th>Type</th>
+							<th>Description</th>
+						</tr>
+						<tr>
+							<td>config.apiKey</td>
+							<td>string</td>
+							<td>DeepSeek API key (optional, can use env)</td>
+						</tr>
+						<tr>
+							<td>config.cwd</td>
+							<td>string</td>
+							<td>Working directory (default: process.cwd())</td>
+						</tr>
+						<tr>
+							<td>config.theme</td>
+							<td>string</td>
+							<td>UI theme: 'glass' | 'dark' | 'light'</td>
+						</tr>
+					</table>
+
+					<div class="return-type">Returns: ForgeInstance with all methods</div>
+				</div>
+
+				<div class="api-method">
+					<div class="method-name">ask(prompt: string, options?: AskOptions): Promise&lt;string&gt;</div>
+					<div class="method-signature">await forge.ask('How do I fix this bug?', { context: fileContent })</div>
+					<p>Send a prompt to DeepSeek AI.</p>
+
+					<table class="param-table">
+						<tr>
+							<th>Parameter</th>
+							<th>Type</th>
+							<th>Description</th>
+						</tr>
+						<tr>
+							<td>prompt</td>
+							<td>string</td>
+							<td>Your question or prompt</td>
+						</tr>
+						<tr>
+							<td>options.context</td>
+							<td>string | string[]</td>
+							<td>File contents or context to include</td>
+						</tr>
+						<tr>
+							<td>options.model</td>
+							<td>string</td>
+							<td>AI model to use</td>
+						</tr>
+						<tr>
+							<td>options.stream</td>
+							<td>boolean</td>
+							<td>Stream response (default: true)</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+			<div class="api-section">
+				<h2>File System API</h2>
+
+				<div class="api-method">
+					<div class="method-name">fs.readFile(path: string): Promise&lt;FileContent&gt;</div>
+					<div class="method-signature">const content = await forge.fs.readFile('src/index.js')</div>
+					<p>Read a file and return its content with metadata.</p>
+
+					<div class="return-type">Returns: { content: string, path: string, size: number, modified: Date }</div>
+				</div>
+
+				<div class="api-method">
+					<div class="method-name">fs.writeFile(path: string, content: string, options?: WriteOptions): Promise&lt;void&gt;</div>
+					<div class="method-signature">await forge.fs.writeFile('test.txt', 'Hello World', { force: true })</div>
+
+					<table class="param-table">
+						<tr>
+							<th>Parameter</th>
+							<th>Type</th>
+							<th>Description</th>
+						</tr>
+						<tr>
+							<td>options.force</td>
+							<td>boolean</td>
+							<td>Overwrite existing file</td>
+						</tr>
+						<tr>
+							<td>options.createDirs</td>
+							<td>boolean</td>
+							<td>Create parent directories</td>
+						</tr>
+					</table>
+				</div>
+
+				<div class="api-method">
+					<div class="method-name">fs.listDir(path?: string, options?: ListOptions): Promise&lt;FileInfo[]&gt;</div>
+					<div class="method-signature">const files = await forge.fs.listDir('./src', { recursive: true })</div>
+
+					<table class="param-table">
+						<tr>
+							<th>Option</th>
+							<th>Type</th>
+							<th>Description</th>
+						</tr>
+						<tr>
+							<td>recursive</td>
+							<td>boolean</td>
+							<td>List recursively</td>
+						</tr>
+						<tr>
+							<td>includeHidden</td>
+							<td>boolean</td>
+							<td>Include dotfiles</td>
+						</tr>
+						<tr>
+							<td>filter</td>
+							<td>RegExp</td>
+							<td>Filter by pattern</td>
+						</tr>
+					</table>
+				</div>
+
+				<div class="api-method">
+					<div class="method-name">fs.search(pattern: string, path?: string): Promise&lt;string[]&gt;</div>
+					<div class="method-signature">const jsFiles = await forge.fs.search('*.js', 'src/')</div>
+					<p>Search for files matching pattern.</p>
+				</div>
+			</div>
+
+			<div class="api-section">
+				<h2>GitHub API</h2>
+
+				<div class="api-method">
+					<div class="method-name">github.auth(token: string): Promise&lt;UserInfo&gt;</div>
+					<div class="method-signature">const user = await forge.github.auth('ghp_xxx')</div>
+					<p>Authenticate with GitHub.</p>
+				</div>
+
+				<div class="api-method">
+					<div class="method-name">github.clone(repo: string, options?: CloneOptions): Promise&lt;LocalRepo&gt;</div>
+					<div class="method-signature">const repo = await forge.github.clone('owner/repo', { depth: 1 })</div>
+
+					<table class="param-table">
+						<tr>
+							<th>Option</th>
+							<th>Type</th>
+							<th>Description</th>
+						</tr>
+						<tr>
+							<td>branch</td>
+							<td>string</td>
+							<td>Branch to clone</td>
+						</tr>
+						<tr>
+							<td>depth</td>
+							<td>number</td>
+							<td>Shallow clone depth</td>
+						</tr>
+						<tr>
+							<td>path</td>
+							<td>string</td>
+							<td>Local path</td>
+						</tr>
+					</table>
+				</div>
+
+				<div class="api-method">
+					<div class="method-name">github.createPR(options: PROptions): Promise&lt;PR&gt;</div>
+					<div class="method-signature">const pr = await forge.github.createPR({ title: 'Fix bug', head: 'fix', base: 'main' })</div>
+
+					<table class="param-table">
+						<tr>
+							<th>Parameter</th>
+							<th>Type</th>
+							<th>Description</th>
+						</tr>
+						<tr>
+							<td>title</td>
+							<td>string</td>
+							<td>PR title</td>
+						</tr>
+						<tr>
+							<td>body</td>
+							<td>string</td>
+							<td>PR description</td>
+						</tr>
+						<tr>
+							<td>head</td>
+							<td>string</td>
+							<td>Head branch</td>
+						</tr>
+						<tr>
+							<td>base</td>
+							<td>string</td>
+							<td>Base branch</td>
+						</tr>
+						<tr>
+							<td>draft</td>
+							<td>boolean</td>
+							<td>Create as draft</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+			<div class="api-section">
+				<h2>Database API</h2>
+
+				<div class="api-method">
+					<div class="method-name">db.connect(config: DBConfig): Promise&lt;Connection&gt;</div>
+					<div class="method-signature">const conn = await forge.db.connect({ host: 'localhost', user: 'root', database: 'forge' })</div>
+				</div>
+
+				<div class="api-method">
+					<div class="method-name">db.query(sql: string, options?: QueryOptions): Promise&lt;QueryResult&gt;</div>
+					<div class="method-signature">const result = await forge.db.query('SELECT * FROM users', { optimize: true })</div>
+
+					<table class="param-table">
+						<tr>
+							<th>Option</th>
+							<th>Type</th>
+							<th>Description</th>
+						</tr>
+						<tr>
+							<td>optimize</td>
+							<td>boolean</td>
+							<td>AI-optimize query</td>
+						</tr>
+						<tr>
+							<td>timeout</td>
+							<td>number</td>
+							<td>Query timeout (ms)</td>
+						</tr>
+					</table>
+
+					<div class="return-type">Returns: { rows: any[], fields: any[], time: number }</div>
+				</div>
+
+				<div class="api-method">
+					<div class="method-name">db.optimizeQuery(sql: string): Promise&lt;OptimizedQuery&gt;</div>
+					<div class="method-signature">const optimized = await forge.db.optimizeQuery('SELECT * FROM large_table')</div>
+
+					<div class="return-type">Returns: { query: string, explanation: string, improvement: number }</div>
+				</div>
+			</div>
+
+			<div class="api-section">
+				<h2>PHP API</h2>
+
+				<div class="api-method">
+					<div class="method-name">php.run(code: string, options?: PHPRunOptions): Promise&lt;PHPResult&gt;</div>
+					<div class="method-signature">const result = await forge.php.run('echo "Hello";', { version: '8.2' })</div>
+
+					<table class="param-table">
+						<tr>
+							<th>Option</th>
+							<th>Type</th>
+							<th>Description</th>
+						</tr>
+						<tr>
+							<td>version</td>
+							<td>string</td>
+							<td>PHP version (7.4-8.3)</td>
+						</tr>
+						<tr>
+							<td>memoryLimit</td>
+							<td>string</td>
+							<td>Memory limit (e.g., '256M')</td>
+						</tr>
+						<tr>
+							<td>timeout</td>
+							<td>number</td>
+							<td>Execution timeout (s)</td>
+						</tr>
+					</table>
+				</div>
+
+				<div class="api-method">
+					<div class="method-name">php.generatePlugin(name: string, description: string, features?: string[]): Promise&lt;Plugin&gt;</div>
+					<div class="method-signature">const plugin = await forge.php.generatePlugin('Contact Form', 'AJAX contact form', ['spam-protection'])</div>
+				</div>
+			</div>
+
+			<div class="api-section">
+				<h2>Testing API</h2>
+
+				<div class="api-method">
+					<div class="method-name">test.generate(code: string, options?: TestOptions): Promise&lt;string&gt;</div>
+					<div class="method-signature">const tests = await forge.test.generate(userCode, { framework: 'jest', coverage: 80 })</div>
+				</div>
+
+				<div class="api-method">
+					<div class="method-name">test.run(testPath: string): Promise&lt;TestResults&gt;</div>
+					<div class="method-signature">const results = await forge.test.run('./tests')</div>
+
+					<div class="return-type">Returns: { passed: number, failed: number, skipped: number, coverage: number }</div>
+				</div>
+
+				<div class="api-method">
+					<div class="method-name">test.debug(file: string, breakpoints?: number[]): Promise&lt;DebugSession&gt;</div>
+					<div class="method-signature">const session = await forge.test.debug('script.js', [10, 25])</div>
+					<p>Start interactive debugging session.</p>
+				</div>
+			</div>
+
+			<div class="api-section">
+				<h2>AI-Native Component API</h2>
+
+				<div class="api-method">
+					<div class="method-name">component.explainState(): Promise&lt;ComponentState&gt;</div>
+					<div class="method-signature">const state = await forge.component('GlassButton').explainState()</div>
+					<p>Get current component state for AI consumption.</p>
+				</div>
+
+				<div class="api-method">
+					<div class="method-name">component.getPossibleActions(): Promise&lt;Action[]&gt;</div>
+					<div class="method-signature">const actions = await forge.component('DatabaseBrowser').getPossibleActions()</div>
+					<p>Get all possible AI actions for this component.</p>
+				</div>
+
+				<div class="api-method">
+					<div class="method-name">component.optimize(): Promise&lt;OptimizationResult&gt;</div>
+					<div class="method-signature">const result = await forge.component('GlassEditor').optimize()</div>
+					<p>Self-optimize component performance.</p>
+				</div>
+			</div>
+
+			<div class="api-section">
+				<h2>Error Handling</h2>
+
+				<div class="api-method">
+					<div class="method-name">try/catch with typed errors</div>
+					<pre><code>try {
+  await forge.github.createPR({...});
+} catch (error) {
+  if (error instanceof ForgeAuthError) {
+    console.log('Authentication failed:', error.message);
+  } else if (error instanceof ForgeAPIError) {
+    console.log('API error:', error.statusCode, error.body);
+  } else if (error instanceof ForgeValidationError) {
+    console.log('Invalid input:', error.field, error.reason);
+  }
+}</code></pre>
+				</div>
+
+				<div class="method-name">Error Types</div>
+				<ul style="margin-left: 1.5rem;">
+					<li>
+						<code>ForgeAuthError</code>
+						- Authentication issues</li>
+					<li>
+						<code>ForgeAPIError</code>
+						- API call failures</li>
+					<li>
+						<code>ForgeValidationError</code>
+						- Invalid input</li>
+					<li>
+						<code>ForgeTimeoutError</code>
+						- Operation timed out</li>
+					<li>
+						<code>ForgeFileError</code>
+						- File system errors</li>
+				</ul>
+			</div>
+		</div>
+
+		<footer class="footer">
+			<p>
+				Made with ❤️ by
+				<a href="https://github.com/LebToki">Tarek Tarabichi</a>
+				from
+				<a href="https://2tinteractive.com">2TInteractive</a>
+				| 
+				            Powered by
+				<a href="https://deepseek.com">DeepSeek AI</a>
+			</p>
+			<p style="margin-top: 1rem;">
+				<a href="https://github.com/LebToki/forge-cli">GitHub</a>
+				•
+				<a href="https://www.npmjs.com/package/@2tinteractive/forge-cli">npm</a>
+				•
+				<a href="index.html">Documentation</a>
+				•
+				<a href="https://github.com/LebToki/forge-cli/issues">Report Issue</a>
+			</p>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Tool Reference - FORGE Documentation</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Inter', sans-serif;
+				background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+				color: #fff;
+				line-height: 1.6;
+			}
+
+			.glass-nav {
+				background: rgba(255, 255, 255, 0.05);
+				backdrop-filter: blur(10px);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				position: sticky;
+				top: 0;
+				z-index: 100;
+			}
+
+			.nav-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 1rem 2rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.logo {
+				font-size: 1.5rem;
+				font-weight: bold;
+				background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			.nav-links a {
+				color: rgba(255, 255, 255, 0.8);
+				text-decoration: none;
+				margin-left: 2rem;
+				font-size: 0.9rem;
+				transition: color 0.3s;
+			}
+
+			.nav-links a:hover {
+				color: #8B5CF6;
+			}
+
+			.container {
+				max-width: 1200px;
+				margin: 4rem auto;
+				padding: 0 2rem;
+			}
+
+			h1 {
+				font-size: 2.5rem;
+				margin-bottom: 1rem;
+				background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			h2 {
+				font-size: 1.8rem;
+				margin: 2rem 0 1rem;
+				color: #8B5CF6;
+			}
+
+			h3 {
+				font-size: 1.3rem;
+				margin: 1.5rem 0 0.5rem;
+				color: #3B82F6;
+			}
+
+			p {
+				margin-bottom: 1rem;
+				color: rgba(255, 255, 255, 0.8);
+			}
+
+			code {
+				background: rgba(0, 0, 0, 0.3);
+				padding: 0.2rem 0.4rem;
+				border-radius: 4px;
+				font-family: 'Fira Code', monospace;
+				color: #EC4899;
+			}
+
+			pre {
+				background: rgba(0, 0, 0, 0.3);
+				padding: 1rem;
+				border-radius: 8px;
+				overflow-x: auto;
+				margin: 1rem 0;
+				border: 1px solid rgba(255, 255, 255, 0.05);
+			}
+
+			.tool-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 1.5rem;
+				margin: 2rem 0;
+			}
+
+			.tool-card {
+				background: rgba(255, 255, 255, 0.03);
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.05);
+				border-radius: 15px;
+				padding: 1.5rem;
+				transition: transform 0.3s, border-color 0.3s;
+			}
+
+			.tool-card:hover {
+				transform: translateY(-5px);
+				border-color: rgba(139, 92, 246, 0.5);
+			}
+
+			.tool-header {
+				display: flex;
+				align-items: center;
+				margin-bottom: 1rem;
+			}
+
+			.tool-icon {
+				font-size: 2rem;
+				margin-right: 1rem;
+			}
+
+			.tool-title {
+				font-size: 1.2rem;
+				font-weight: bold;
+				color: #8B5CF6;
+			}
+
+			.tool-command {
+				background: rgba(0, 0, 0, 0.2);
+				padding: 0.3rem 0.6rem;
+				border-radius: 4px;
+				font-family: monospace;
+				font-size: 0.9rem;
+				margin-top: 0.5rem;
+				color: #EC4899;
+			}
+
+			.badge {
+				display: inline-block;
+				background: rgba(139, 92, 246, 0.2);
+				border: 1px solid rgba(139, 92, 246, 0.3);
+				border-radius: 20px;
+				padding: 0.2rem 0.8rem;
+				font-size: 0.8rem;
+				margin-right: 0.5rem;
+				margin-top: 0.5rem;
+			}
+
+			.method-list {
+				list-style: none;
+				margin-top: 1rem;
+			}
+
+			.method-list li {
+				padding: 0.3rem 0;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+				font-size: 0.9rem;
+			}
+
+			.method-list code {
+				background: none;
+				color: #8B5CF6;
+				padding: 0;
+			}
+
+			.footer {
+				background: rgba(0, 0, 0, 0.3);
+				backdrop-filter: blur(10px);
+				border-top: 1px solid rgba(255, 255, 255, 0.05);
+				padding: 2rem;
+				text-align: center;
+				color: rgba(255, 255, 255, 0.5);
+				margin-top: 4rem;
+			}
+
+			.footer a {
+				color: #8B5CF6;
+				text-decoration: none;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="glass-nav">
+			<div class="nav-container">
+				<div class="logo">🔥 FORGE</div>
+				<div class="nav-links">
+					<a href="index.html">Home</a>
+					<a href="getting-started.html">Getting Started</a>
+					<a href="configuration.html">Config</a>
+					<a href="github-integration.html">GitHub</a>
+					<a href="tool-reference.html">Tools</a>
+					<a href="examples.html">Examples</a>
+					<a href="https://github.com/LebToki/forge-cli">GitHub</a>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container">
+			<h1>Tool Reference</h1>
+			<p>Complete reference for all FORGE commands and AI-native methods.</p>
+
+			<h2>Core Commands</h2>
+			<div class="tool-grid">
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">💬</div>
+						<div class="tool-title">ask</div>
+					</div>
+					<p>Ask DeepSeek AI any question about code or development.</p>
+					<div class="tool-command">forge ask "How do I..."</div>
+					<div class="badge">AI-Powered</div>
+					<div class="badge">Streaming</div>
+					<div class="method-list">
+						<li>
+							<code>--file</code>
+							- Include file context</li>
+						<li>
+							<code>--model</code>
+							- Choose AI model</li>
+					</div>
+				</div>
+
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">⚙️</div>
+						<div class="tool-title">config</div>
+					</div>
+					<p>Manage FORGE configuration and API keys.</p>
+					<div class="tool-command">forge config set deepseek.api_key xxx</div>
+					<div class="badge">Secure</div>
+					<div class="method-list">
+						<li>
+							<code>set</code>
+							- Set config value</li>
+						<li>
+							<code>get</code>
+							- Get config value</li>
+						<li>
+							<code>list</code>
+							- Show all config</li>
+					</div>
+				</div>
+
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">📋</div>
+						<div class="tool-title">task</div>
+					</div>
+					<p>Execute complex multi-step development tasks.</p>
+					<div class="tool-command">forge task "Fix login bug and create PR"</div>
+					<div class="badge">Autonomous</div>
+					<div class="badge">AI-Planned</div>
+				</div>
+			</div>
+
+			<h2>File System Tools</h2>
+			<div class="tool-grid">
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">📂</div>
+						<div class="tool-title">fs ls</div>
+					</div>
+					<p>List directory contents with beautiful tree view.</p>
+					<div class="tool-command">forge fs ls --recursive</div>
+					<div class="badge">Syntax Highlight</div>
+					<div class="method-list">
+						<li>
+							<code>--recursive</code>
+							- Show recursively</li>
+						<li>
+							<code>--all</code>
+							- Show hidden files</li>
+					</div>
+				</div>
+
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">📄</div>
+						<div class="tool-title">fs cat</div>
+					</div>
+					<p>Display file contents with syntax highlighting.</p>
+					<div class="tool-command">forge fs cat file.js --lines 20</div>
+					<div class="badge">30+ Languages</div>
+					<div class="method-list">
+						<li>
+							<code>--lines</code>
+							- Show first N lines</li>
+						<li>
+							<code>--language</code>
+							- Force language</li>
+					</div>
+				</div>
+
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">✍️</div>
+						<div class="tool-title">fs write</div>
+					</div>
+					<p>Create or edit files with AI assistance.</p>
+					<div class="tool-command">forge fs write script.py --prompt "Write a web scraper"</div>
+					<div class="badge">AI Generation</div>
+					<div class="badge">Diff Preview</div>
+				</div>
+
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">🔍</div>
+						<div class="tool-title">fs search</div>
+					</div>
+					<p>Search for files matching patterns.</p>
+					<div class="tool-command">forge fs search "*.js" --path src/</div>
+					<div class="badge">Fast</div>
+				</div>
+
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">🔄</div>
+						<div class="tool-title">fs diff</div>
+					</div>
+					<p>Show differences between files.</p>
+					<div class="tool-command">forge fs diff file1.js file2.js</div>
+					<div class="badge">Colorized</div>
+				</div>
+			</div>
+
+			<h2>Command Execution</h2>
+			<div class="tool-grid">
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">⚡</div>
+						<div class="tool-title">run cmd</div>
+					</div>
+					<p>Run shell commands with live output.</p>
+					<div class="tool-command">forge run cmd "npm test"</div>
+					<div class="badge">Live Streaming</div>
+					<div class="method-list">
+						<li>
+							<code>--cwd</code>
+							- Working directory</li>
+						<li>
+							<code>--timeout</code>
+							- Command timeout</li>
+						<li>
+							<code>--analyze</code>
+							- AI error analysis</li>
+					</div>
+				</div>
+
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">🐍</div>
+						<div class="tool-title">run code</div>
+					</div>
+					<p>Execute code snippets in multiple languages.</p>
+					<div class="tool-command">forge run code "print('hello')" --lang python</div>
+					<div class="badge">8+ Languages</div>
+					<div class="badge">Auto-Detect</div>
+				</div>
+
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">📋</div>
+						<div class="tool-title">run list</div>
+					</div>
+					<p>List available language runtimes.</p>
+					<div class="tool-command">forge run list</div>
+					<div class="badge">Version Check</div>
+				</div>
+			</div>
+
+			<h2>PHP & WordPress Tools</h2>
+			<div class="tool-grid">
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">🐘</div>
+						<div class="tool-title">php run</div>
+					</div>
+					<p>Execute PHP code in secure sandbox.</p>
+					<div class="tool-command">forge php run "echo 'Hello';" --version 8.2</div>
+					<div class="badge">Docker Sandbox</div>
+					<div class="badge">5 PHP Versions</div>
+				</div>
+
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">🔌</div>
+						<div class="tool-title">php generate-plugin</div>
+					</div>
+					<p>Generate WordPress plugins with AI.</p>
+					<div class="tool-command">forge php generate-plugin "Contact Form" --features ajax,shortcode</div>
+					<div class="badge">WordPress</div>
+					<div class="badge">Best Practices</div>
+				</div>
+
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">🎨</div>
+						<div class="tool-title">php generate-theme</div>
+					</div>
+					<p>Create WordPress themes with AI.</p>
+					<div class="tool-command">forge php generate-theme "My Theme" --responsive</div>
+					<div class="badge">Customizable</div>
+				</div>
+			</div>
+
+			<h2>Database Tools</h2>
+			<div class="tool-grid">
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">📊</div>
+						<div class="tool-title">db connect</div>
+					</div>
+					<p>Connect to MySQL database.</p>
+					<div class="tool-command">forge db connect --host localhost --user root</div>
+					<div class="badge">Secure</div>
+				</div>
+
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">⚡</div>
+						<div class="tool-title">db query</div>
+					</div>
+					<p>Execute SQL queries with AI optimization.</p>
+					<div class="tool-command">forge db query "SELECT * FROM users" --optimize</div>
+					<div class="badge">AI Optimized</div>
+					<div class="badge">Up to 75% faster</div>
+				</div>
+
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">📈</div>
+						<div class="tool-title">db analyze</div>
+					</div>
+					<p>Analyze database performance.</p>
+					<div class="tool-command">forge db analyze --slow-queries</div>
+					<div class="badge">Index Suggestions</div>
+				</div>
+
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">💾</div>
+						<div class="tool-title">db backup</div>
+					</div>
+					<p>Generate database backups.</p>
+					<div class="tool-command">forge db backup --database myapp</div>
+					<div class="badge">SQL Dump</div>
+				</div>
+			</div>
+
+			<h2>Testing & Debugging</h2>
+			<div class="tool-grid">
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">🧪</div>
+						<div class="tool-title">test generate</div>
+					</div>
+					<p>Generate tests with AI.</p>
+					<div class="tool-command">forge test generate app.js --framework jest</div>
+					<div class="badge">Auto-Analysis</div>
+					<div class="badge">80% Coverage Target</div>
+				</div>
+
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">🐛</div>
+						<div class="tool-title">test debug</div>
+					</div>
+					<p>Interactive debugging with AI.</p>
+					<div class="tool-command">forge test debug script.py --breakpoint 10</div>
+					<div class="badge">AI Commands</div>
+					<div class="badge">Watch Variables</div>
+				</div>
+
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">📊</div>
+						<div class="tool-title">test profile</div>
+					</div>
+					<p>Performance profiling.</p>
+					<div class="tool-command">forge test profile app.js --line --memory</div>
+					<div class="badge">CPU</div>
+					<div class="badge">Memory</div>
+					<div class="badge">Line-by-Line</div>
+				</div>
+
+				<div class="tool-card">
+					<div class="tool-header">
+						<div class="tool-icon">🔍</div>
+						<div class="tool-title">test analyze</div>
+					</div>
+					<p>Analyze error tracebacks.</p>
+					<div class="tool-command">forge test analyze error.log --code app.js</div>
+					<div class="badge">Fix Suggestions</div>
+				</div>
+			</div>
+
+			<h2>AI-Native Methods</h2>
+			<div class="glass-panel" style="padding: 2rem; margin: 2rem 0;">
+				<p>Every FORGE component exposes these AI-native methods:</p>
+
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+					<div style="background: rgba(139, 92, 246, 0.1); padding: 1rem; border-radius: 10px;">
+						<code style="font-size: 1.1rem;">explainState()</code>
+						<p style="margin-top: 0.5rem; font-size: 0.9rem;">Returns current component state for AI consumption. Includes props, context, and performance metrics.</p>
+					</div>
+
+					<div style="background: rgba(139, 92, 246, 0.1); padding: 1rem; border-radius: 10px;">
+						<code style="font-size: 1.1rem;">getPossibleActions()</code>
+						<p style="margin-top: 0.5rem; font-size: 0.9rem;">Returns all possible AI actions this component supports, with parameters and descriptions.</p>
+					</div>
+
+					<div style="background: rgba(139, 92, 246, 0.1); padding: 1rem; border-radius: 10px;">
+						<code style="font-size: 1.1rem;">optimize()</code>
+						<p style="margin-top: 0.5rem; font-size: 0.9rem;">Self-optimizes component performance based on usage patterns.</p>
+					</div>
+
+					<div style="background: rgba(139, 92, 246, 0.1); padding: 1rem; border-radius: 10px;">
+						<code style="font-size: 1.1rem;">suggestImprovements()</code>
+						<p style="margin-top: 0.5rem; font-size: 0.9rem;">AI suggests code improvements for the component.</p>
+					</div>
+				</div>
+
+				<div style="margin-top: 2rem;">
+					<h3>Example: GlassButton Manifest</h3>
+					<pre><code>{
+  "component": "GlassButton",
+  "state": {
+    "isEnabled": true,
+    "variant": "primary",
+    "size": "md",
+    "isLoading": false
+  },
+  "possibleActions": [
+    {"action": "click", "description": "Simulate button click"},
+    {"action": "disable", "description": "Disable the button"},
+    {"action": "setVariant", "params": ["primary|secondary|danger"]}
+  ]
+}</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<footer class="footer">
+			<p>
+				Made with ❤️ by
+				<a href="https://github.com/LebToki">Tarek Tarabichi</a>
+				from
+				<a href="https://2tinteractive.com">2TInteractive</a>
+				| 
+				            Powered by
+				<a href="https://deepseek.com">DeepSeek AI</a>
+			</p>
+			<p style="margin-top: 1rem;">
+				<a href="https://github.com/LebToki/forge-cli">GitHub</a>
+				•
+				<a href="https://www.npmjs.com/package/@2tinteractive/forge-cli">npm</a>
+				•
+				<a href="index.html">Documentation</a>
+				•
+				<a href="https://github.com/LebToki/forge-cli/issues">Report Issue</a>
+			</p>
+		</footer>
+	</body>
+</html>

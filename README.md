@@ -119,13 +119,13 @@ We'd love your help! Check out [CONTRIBUTING.md](CONTRIBUTING.md) to get started
 
 ## 📚 Documentation
 
-Full documentation at [forge.sh](https://forge.sh) (placeholder)
+Full documentation at [https://2tinteractive.com/demo/forge/docs/](https://2tinteractive.com/demo/forge/docs/)
 
-- Getting Started
-- Configuration
-- GitHub Integration
-- Tool Reference
-- Examples
+- [Getting Started](https://2tinteractive.com/demo/forge/docs/getting-started)
+- [Configuration](https://2tinteractive.com/demo/forge/docs/configuration)
+- [GitHub Integration](https://2tinteractive.com/demo/forge/docs/github-integration)
+- [Tool Reference](https://2tinteractive.com/demo/forge/docs/tool-reference)
+- [Examples](https://2tinteractive.com/demo/forge/docs/examples)
 
 ---
 

@@ -1,0 +1,16 @@
+# Enable rewrite engine
+RewriteEngine On
+
+# Redirect root to docs
+RewriteRule ^demo/forge/?$ /demo/forge/docs/ [R=301,L]
+
+# Serve docs index for /demo/forge/docs/
+RewriteRule ^demo/forge/docs/?$ /demo/forge/docs/index.html [L]
+
+# Pretty URLs - serve HTML files without extension
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^demo/forge/docs/([^/]+)/?$ /demo/forge/docs/$1.html [L]
+
+# Custom error pages
+ErrorDocument 404 /demo/forge/docs/404.html

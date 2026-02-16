@@ -43,11 +43,11 @@ program
       }
       
       const response = await client.ask(question, files);
-      spinner.success({ text: '✨ FORGE responds:', mark: '🔥' });
+      spinner.succeed('✨ FORGE responds:');
       
       console.log(glassPanel(response, 'DeepSeek says'));
     } catch (error) {
-      spinner.error({ text: `💥 Error: ${error}` });
+      spinner.fail(`💥 Error: ${error}`);
     }
   });
 
@@ -75,11 +75,11 @@ program
     try {
       const client = new DeepSeekClient();
       const code = await client.generate(`Generate ${options.language} code for: ${prompt}`);
-      spinner.success({ text: '✨ Code generated!', mark: '🔥' });
+      spinner.succeed('✨ Code generated!');
       
       console.log(glassPanel(code, `${options.language} Code`));
     } catch (error) {
-      spinner.error({ text: `💥 Error: ${error}` });
+      spinner.fail(`💥 Error: ${error}`);
     }
   });
 
@@ -111,21 +111,21 @@ program
         - Internationalization ready`;
         
         const code = await client.generate(prompt);
-        spinner.success({ text: '✨ Plugin generated!', mark: '🧩' });
+        spinner.succeed('✨ Plugin generated!');
         console.log(glassPanel(code, `WordPress Plugin: ${pluginName}`));
         
       } else if (action === 'theme') {
         const themeName = args[0] || 'my-theme';
         const prompt = `Generate a WordPress theme structure for: ${themeName}`;
         const code = await client.generate(prompt);
-        spinner.success({ text: '✨ Theme generated!', mark: '🎨' });
+        spinner.succeed('✨ Theme generated!');
         console.log(glassPanel(code, `WordPress Theme: ${themeName}`));
         
       } else {
-        spinner.error({ text: '⚠️ Unknown action. Use: plugin, theme, or analyze' });
+        spinner.fail('⚠️ Unknown action. Use: plugin, theme, or analyze');
       }
     } catch (error) {
-      spinner.error({ text: `💥 Error: ${error}` });
+      spinner.fail(`💥 Error: ${error}`);
     }
   });
 

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>FORGE Documentation - AI-Native Development Ecosystem</title>
+		<style>
+			/* Glassmorphic Theme */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+				background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+				min-height: 100vh;
+				color: #fff;
+				line-height: 1.6;
+			}
+
+			.glass-nav {
+				background: rgba(255, 255, 255, 0.05);
+				backdrop-filter: blur(10px);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				position: sticky;
+				top: 0;
+				z-index: 100;
+			}
+
+			.nav-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 1rem 2rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.logo {
+				font-size: 1.5rem;
+				font-weight: bold;
+				background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			.nav-links a {
+				color: rgba(255, 255, 255, 0.8);
+				text-decoration: none;
+				margin-left: 2rem;
+				font-size: 0.9rem;
+				transition: color 0.3s;
+			}
+
+			.nav-links a:hover {
+				color: #8B5CF6;
+			}
+
+			.hero {
+				text-align: center;
+				padding: 4rem 2rem;
+				background: rgba(255, 255, 255, 0.02);
+				backdrop-filter: blur(5px);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+			}
+
+			.hero h1 {
+				font-size: 3rem;
+				margin-bottom: 1rem;
+				background: linear-gradient(135deg, #8B5CF6, #EC4899, #3B82F6);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			.hero p {
+				font-size: 1.2rem;
+				color: rgba(255, 255, 255, 0.7);
+				max-width: 600px;
+				margin: 0 auto;
+			}
+
+			.docs-grid {
+				max-width: 1200px;
+				margin: 4rem auto;
+				padding: 0 2rem;
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 2rem;
+			}
+
+			.doc-card {
+				background: rgba(255, 255, 255, 0.03);
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.05);
+				border-radius: 20px;
+				padding: 2rem;
+				transition: transform 0.3s, border-color 0.3s;
+				cursor: pointer;
+			}
+
+			.doc-card:hover {
+				transform: translateY(-5px);
+				border-color: rgba(139, 92, 246, 0.5);
+			}
+
+			.doc-icon {
+				font-size: 2rem;
+				margin-bottom: 1rem;
+			}
+
+			.doc-card h3 {
+				font-size: 1.3rem;
+				margin-bottom: 0.5rem;
+				color: #8B5CF6;
+			}
+
+			.doc-card p {
+				color: rgba(255, 255, 255, 0.6);
+				font-size: 0.9rem;
+			}
+
+			.footer {
+				background: rgba(0, 0, 0, 0.3);
+				backdrop-filter: blur(10px);
+				border-top: 1px solid rgba(255, 255, 255, 0.05);
+				padding: 2rem;
+				text-align: center;
+				color: rgba(255, 255, 255, 0.5);
+				font-size: 0.9rem;
+			}
+
+			.footer a {
+				color: #8B5CF6;
+				text-decoration: none;
+			}
+
+			.footer a:hover {
+				text-decoration: underline;
+			}
+
+			.badge {
+				display: inline-block;
+				background: rgba(139, 92, 246, 0.2);
+				border: 1px solid rgba(139, 92, 246, 0.3);
+				border-radius: 20px;
+				padding: 0.3rem 1rem;
+				font-size: 0.8rem;
+				margin-right: 0.5rem;
+			}
+
+			.search-bar {
+				max-width: 600px;
+				margin: 2rem auto;
+				padding: 0 2rem;
+			}
+
+			.search-input {
+				width: 100%;
+				padding: 1rem;
+				background: rgba(255, 255, 255, 0.05);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 40px;
+				color: white;
+				font-size: 1rem;
+				backdrop-filter: blur(10px);
+			}
+
+			.search-input:focus {
+				outline: none;
+				border-color: #8B5CF6;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="glass-nav">
+			<div class="nav-container">
+				<div class="logo">🔥 FORGE</div>
+				<div class="nav-links">
+					<a href="#getting-started">Getting Started</a>
+					<a href="#configuration">Configuration</a>
+					<a href="#github">GitHub</a>
+					<a href="#tools">Tools</a>
+					<a href="#examples">Examples</a>
+					<a href="https://github.com/LebToki/forge-cli" target="_blank">GitHub</a>
+				</div>
+			</div>
+		</nav>
+
+		<section class="hero">
+			<h1>FORGE Documentation</h1>
+			<p>AI-Native Development Ecosystem • Powered by DeepSeek</p>
+			<div class="badge">v1.0.0</div>
+			<div class="badge">Beta</div>
+			<div class="badge">Open Source</div>
+
+			<div class="search-bar">
+				<input type="text" class="search-input" placeholder="Search documentation... (AI-powered search coming soon)">
+			</div>
+		</section>
+
+		<div class="docs-grid">
+			<a href="getting-started.html" style="text-decoration: none;">
+				<div class="doc-card">
+					<div class="doc-icon">🚀</div>
+					<h3>Getting Started</h3>
+					<p>Install FORGE, set up your API keys, and run your first command in 5 minutes.</p>
+					<ul style="margin-top: 1rem; color: rgba(255,255,255,0.5); font-size: 0.8rem;">
+						<li>Quick installation</li>
+						<li>First steps</li>
+						<li>Basic commands</li>
+					</ul>
+				</div>
+			</a>
+
+			<a href="configuration.html" style="text-decoration: none;">
+				<div class="doc-card">
+					<div class="doc-icon">⚙️</div>
+					<h3>Configuration</h3>
+					<p>Configure FORGE for your workflow - API keys, themes, and preferences.</p>
+					<ul style="margin-top: 1rem; color: rgba(255,255,255,0.5); font-size: 0.8rem;">
+						<li>DeepSeek API setup</li>
+						<li>GitHub integration</li>
+						<li>Theme customization</li>
+					</ul>
+				</div>
+			</a>
+
+			<a href="github-integration.html" style="text-decoration: none;">
+				<div class="doc-card">
+					<div class="doc-icon">🐙</div>
+					<h3>GitHub Integration</h3>
+					<p>Clone repos, create PRs, manage issues - all with AI assistance.</p>
+					<ul style="margin-top: 1rem; color: rgba(255,255,255,0.5); font-size: 0.8rem;">
+						<li>Authentication</li>
+						<li>PR management</li>
+						<li>AI commit messages</li>
+					</ul>
+				</div>
+			</a>
+
+			<a href="tool-reference.html" style="text-decoration: none;">
+				<div class="doc-card">
+					<div class="doc-icon">🔧</div>
+					<h3>Tool Reference</h3>
+					<p>Complete reference for all FORGE commands and AI methods.</p>
+					<ul style="margin-top: 1rem; color: rgba(255,255,255,0.5); font-size: 0.8rem;">
+						<li>CLI commands</li>
+						<li>AI methods</li>
+						<li>Component manifests</li>
+					</ul>
+				</div>
+			</a>
+
+			<a href="examples.html" style="text-decoration: none;">
+				<div class="doc-card">
+					<div class="doc-icon">📝</div>
+					<h3>Examples</h3>
+					<p>Real-world examples showing FORGE in action.</p>
+					<ul style="margin-top: 1rem; color: rgba(255,255,255,0.5); font-size: 0.8rem;">
+						<li>WordPress plugin</li>
+						<li>Database optimization</li>
+						<li>GitHub automation</li>
+					</ul>
+				</div>
+			</a>
+
+			<a href="api-reference.html" style="text-decoration: none;">
+				<div class="doc-card">
+					<div class="doc-icon">🤖</div>
+					<h3>AI Methods API</h3>
+					<p>Deep dive into FORGE's AI-native component methods.</p>
+					<ul style="margin-top: 1rem; color: rgba(255,255,255,0.5); font-size: 0.8rem;">
+						<li>explainState()</li>
+						<li>getPossibleActions()</li>
+						<li>selfOptimize()</li>
+					</ul>
+				</div>
+			</a>
+		</div>
+
+		<footer class="footer">
+			<p>
+				Made with ❤️ by
+				<a href="https://github.com/LebToki">Tarek Tarabichi</a>
+				from
+				<a href="https://2tinteractive.com">2TInteractive</a>
+				| 
+								            Powered by
+				<a href="https://deepseek.com">DeepSeek AI</a>
+			</p>
+			<p style="margin-top: 1rem;">
+				<a href="https://github.com/LebToki/forge-cli">GitHub</a>
+				•
+				<a href="https://www.npmjs.com/package/@2tinteractive/forge-cli">npm</a>
+				•
+				<a href="#">Privacy</a>
+				•
+				<a href="#">Terms</a>
+			</p>
+		</footer>
+	</body>
+</html>

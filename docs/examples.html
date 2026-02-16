@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Examples - FORGE Documentation</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Inter', sans-serif;
+				background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+				color: #fff;
+				line-height: 1.6;
+			}
+
+			.glass-nav {
+				background: rgba(255, 255, 255, 0.05);
+				backdrop-filter: blur(10px);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				position: sticky;
+				top: 0;
+				z-index: 100;
+			}
+
+			.nav-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 1rem 2rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.logo {
+				font-size: 1.5rem;
+				font-weight: bold;
+				background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			.nav-links a {
+				color: rgba(255, 255, 255, 0.8);
+				text-decoration: none;
+				margin-left: 2rem;
+				font-size: 0.9rem;
+				transition: color 0.3s;
+			}
+
+			.nav-links a:hover {
+				color: #8B5CF6;
+			}
+
+			.container {
+				max-width: 1000px;
+				margin: 4rem auto;
+				padding: 0 2rem;
+			}
+
+			h1 {
+				font-size: 2.5rem;
+				margin-bottom: 1rem;
+				background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			h2 {
+				font-size: 1.8rem;
+				margin: 2rem 0 1rem;
+				color: #8B5CF6;
+			}
+
+			h3 {
+				font-size: 1.3rem;
+				margin: 1.5rem 0 0.5rem;
+				color: #3B82F6;
+			}
+
+			p {
+				margin-bottom: 1rem;
+				color: rgba(255, 255, 255, 0.8);
+			}
+
+			code {
+				background: rgba(0, 0, 0, 0.3);
+				padding: 0.2rem 0.4rem;
+				border-radius: 4px;
+				font-family: 'Fira Code', monospace;
+				color: #EC4899;
+			}
+
+			pre {
+				background: rgba(0, 0, 0, 0.3);
+				padding: 1rem;
+				border-radius: 8px;
+				overflow-x: auto;
+				margin: 1rem 0;
+				border: 1px solid rgba(255, 255, 255, 0.05);
+			}
+
+			.example-card {
+				background: rgba(255, 255, 255, 0.03);
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.05);
+				border-radius: 20px;
+				padding: 2rem;
+				margin-bottom: 2rem;
+			}
+
+			.example-title {
+				font-size: 1.5rem;
+				font-weight: bold;
+				color: #8B5CF6;
+				margin-bottom: 1rem;
+			}
+
+			.example-description {
+				margin-bottom: 1.5rem;
+				color: rgba(255, 255, 255, 0.7);
+			}
+
+			.example-step {
+				background: rgba(255, 255, 255, 0.02);
+				border-left: 4px solid #3B82F6;
+				padding: 1rem;
+				margin: 1rem 0;
+			}
+
+			.output {
+				background: rgba(0, 0, 0, 0.5);
+				border: 1px solid rgba(139, 92, 246, 0.3);
+				border-radius: 8px;
+				padding: 1rem;
+				font-family: monospace;
+				color: #10B981;
+			}
+
+			.badge {
+				display: inline-block;
+				background: rgba(139, 92, 246, 0.2);
+				border: 1px solid rgba(139, 92, 246, 0.3);
+				border-radius: 20px;
+				padding: 0.2rem 0.8rem;
+				font-size: 0.8rem;
+				margin-right: 0.5rem;
+				margin-top: 0.5rem;
+			}
+
+			.footer {
+				background: rgba(0, 0, 0, 0.3);
+				backdrop-filter: blur(10px);
+				border-top: 1px solid rgba(255, 255, 255, 0.05);
+				padding: 2rem;
+				text-align: center;
+				color: rgba(255, 255, 255, 0.5);
+				margin-top: 4rem;
+			}
+
+			.footer a {
+				color: #8B5CF6;
+				text-decoration: none;
+			}
+
+			.tabs {
+				display: flex;
+				gap: 0.5rem;
+				margin: 1rem 0;
+				flex-wrap: wrap;
+			}
+
+			.tab {
+				padding: 0.5rem 1rem;
+				background: rgba(255, 255, 255, 0.05);
+				border-radius: 20px;
+				cursor: pointer;
+				transition: all 0.3s;
+				font-size: 0.9rem;
+			}
+
+			.tab:hover {
+				background: rgba(139, 92, 246, 0.2);
+			}
+
+			.tab.active {
+				background: #8B5CF6;
+				color: white;
+			}
+
+			.comparison {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1rem;
+				margin: 1rem 0;
+			}
+
+			.comparison-item {
+				padding: 1rem;
+				border-radius: 10px;
+			}
+
+			.bad {
+				background: rgba(239, 68, 68, 0.1);
+				border: 1px solid rgba(239, 68, 68, 0.3);
+			}
+
+			.good {
+				background: rgba(16, 185, 129, 0.1);
+				border: 1px solid rgba(16, 185, 129, 0.3);
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="glass-nav">
+			<div class="nav-container">
+				<div class="logo">🔥 FORGE</div>
+				<div class="nav-links">
+					<a href="index.html">Home</a>
+					<a href="getting-started.html">Getting Started</a>
+					<a href="configuration.html">Config</a>
+					<a href="github-integration.html">GitHub</a>
+					<a href="tool-reference.html">Tools</a>
+					<a href="examples.html">Examples</a>
+					<a href="https://github.com/LebToki/forge-cli">GitHub</a>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container">
+			<h1>Examples</h1>
+			<p>Real-world examples showing FORGE in action. Copy, paste, and customize!</p>
+
+			<div class="tabs">
+				<span class="tab active">PHP/WordPress</span>
+				<span class="tab">Database</span>
+				<span class="tab">GitHub</span>
+				<span class="tab">Testing</span>
+				<span class="tab">AI Chat</span>
+			</div>
+
+			<!-- PHP/WordPress Examples -->
+			<div class="example-card">
+				<div class="example-title">🐘 Generate WordPress Contact Form Plugin</div>
+				<div class="example-description">
+					Create a complete WordPress contact form plugin with AJAX, spam protection, and admin panel.
+				</div>
+
+				<div class="example-step">
+					<strong>Step 1:</strong>
+					Generate the plugin with AI
+				</div>
+				<pre><code>forge php generate-plugin "Advanced Contact Form" \
+  --features "ajax,spam-protection,file-uploads,admin-panel" \
+  --output ./wp-content/plugins/contact-form</code></pre>
+
+				<div class="example-step">
+					<strong>Step 2:</strong>
+					Review the generated code
+				</div>
+				<pre><code>forge fs cat wp-content/plugins/contact-form/contact-form.php</code></pre>
+
+				<div class="example-step">
+					<strong>Output Preview:</strong>
+				</div>
+				<div class="output">
+					✓ Plugin generated successfully!<br>
+					📁 Location: ./wp-content/plugins/contact-form/<br>
+					📄 Files created:<br>
+					&nbsp;&nbsp;├── contact-form.php (main plugin file)<br>
+					&nbsp;&nbsp;├── includes/class-form-handler.php<br>
+					&nbsp;&nbsp;├── includes/class-ajax-handler.php<br>
+					&nbsp;&nbsp;├── admin/class-admin-panel.php<br>
+					&nbsp;&nbsp;├── assets/js/form.js<br>
+					&nbsp;&nbsp;└── assets/css/form.css<br>
+					<br>
+					🤖 AI Analysis: Plugin follows WordPress coding standards, includes nonce verification,<br>
+					&nbsp;&nbsp;and uses transients for spam protection.
+				</div>
+
+				<div class="example-step">
+					<strong>Step 3:</strong>
+					Activate and test
+				</div>
+				<pre><code>forge wp plugin activate contact-form
+forge wp option get contact_form_settings</code></pre>
+
+				<div class="badge">WordPress</div>
+				<div class="badge">AJAX</div>
+				<div class="badge">Security</div>
+			</div>
+
+			<!-- Database Examples -->
+			<div class="example-card">
+				<div class="example-title">📊 Optimize Slow MySQL Query</div>
+				<div class="example-description">
+					Take a slow query and let FORGE optimize it with AI, then compare performance.
+				</div>
+
+				<div class="comparison">
+					<div class="comparison-item bad">
+						<strong>❌ Before (3.2 seconds)</strong>
+						<pre><code style="background: none;">SELECT * FROM posts 
+LEFT JOIN comments ON posts.id = comments.post_id 
+LEFT JOIN users ON comments.user_id = users.id 
+LEFT JOIN post_meta ON posts.id = post_meta.post_id 
+WHERE posts.status = 'published' 
+AND posts.created_at > '2024-01-01'</code></pre>
+					</div>
+					<div class="comparison-item good">
+						<strong>✅ After (0.8 seconds)</strong>
+						<pre><code style="background: none;">SELECT 
+    p.id, p.title, p.content,
+    COUNT(DISTINCT c.id) as comment_count,
+    GROUP_CONCAT(DISTINCT pm.meta_value) as meta
+FROM posts p
+INNER JOIN (
+    SELECT id FROM posts 
+    WHERE status = 'published' 
+    AND created_at > '2024-01-01'
+) filtered ON p.id = filtered.id
+LEFT JOIN comments c ON p.id = c.post_id
+LEFT JOIN post_meta pm ON p.id = pm.post_id
+GROUP BY p.id</code></pre>
+					</div>
+				</div>
+
+				<div class="example-step">
+					<strong>Command:</strong>
+				</div>
+				<pre><code>forge db optimize --query "SELECT * FROM posts LEFT JOIN comments..."</code></pre>
+
+				<div class="example-step">
+					<strong>AI Analysis:</strong>
+				</div>
+				<div class="output">
+					🔍 Query Analysis:<br>
+					- Original time: 3.2 seconds<br>
+					- Optimized time: 0.8 seconds<br>
+					- Improvement: 75% faster<br>
+					<br>
+					📊 Recommendations:<br>
+					1. Added index on posts.status, posts.created_at<br>
+					2. Used INNER JOIN subquery to reduce rows early<br>
+					3. Removed unnecessary LEFT JOIN to users table<br>
+					4. Added COUNT and GROUP_CONCAT for aggregations<br>
+					<br>
+					💾 Suggested indexes:<br>
+					CREATE INDEX idx_posts_status_date ON posts(status, created_at);<br>
+					CREATE INDEX idx_comments_post_id ON comments(post_id);
+				</div>
+
+				<div class="badge">MySQL</div>
+				<div class="badge">Performance</div>
+				<div class="badge">75% Faster</div>
+			</div>
+
+			<!-- GitHub Automation Examples -->
+			<div class="example-card">
+				<div class="example-title">🐙 Automatically Fix Issue and Create PR</div>
+				<div class="example-description">
+					FORGE reads an issue, generates a fix, creates a branch, commits, and opens a PR.
+				</div>
+
+				<div class="example-step">
+					<strong>Issue #42:</strong>
+					"Login button not working on mobile"
+				</div>
+				<pre><code>forge github fix-issue owner/repo 42</code></pre>
+
+				<div class="example-step">
+					<strong>FORGE's Actions:</strong>
+				</div>
+				<div class="output">
+					🔍 Analyzing issue #42...<br>
+					📁 Found relevant files:<br>
+					&nbsp;&nbsp;- src/components/LoginButton.js<br>
+					&nbsp;&nbsp;- src/styles/mobile.css<br>
+					<br>
+					🤖 Generating fix...<br>
+					&nbsp;&nbsp;Issue: Missing touch event handler on mobile devices<br>
+					&nbsp;&nbsp;Fix: Add 'ontouchstart' event and increase tap target size<br>
+					<br>
+					📝 Generated fix:<br>
+					<br>
+					```diff<br>
+					- &lt;button onClick={handleLogin}&gt;Login&lt;/button&gt;<br>
+					+ &lt;button
+					<br>
+					+   onClick={handleLogin}<br>
+					+   onTouchStart={handleLogin}<br>
+					+   style={{ padding: '12px 24px' }}<br>
+					+ &gt;Login&lt;/button&gt;<br>
+					```<br>
+					<br>
+					🌿 Creating branch: fix/login-button-mobile-42<br>
+					💾 Committing changes...<br>
+					⬆️ Pushing to origin...<br>
+					🔗 Creating Pull Request #43<br>
+					<br>
+					✅ PR created: https://github.com/owner/repo/pull/43
+				</div>
+
+				<div class="example-step">
+					<strong>Generated PR Description:</strong>
+				</div>
+				<div class="output">
+					## Fixes #42 - Login Button Mobile Issues<br>
+					<br>
+					### Changes<br>
+					- Added touch event handler for mobile devices<br>
+					- Increased tap target size for better UX<br>
+					- Tested on iOS Safari and Chrome Android<br>
+					<br>
+					### Testing<br>
+					1. Open login page on mobile device<br>
+					2. Tap login button<br>
+					3. Verify login action triggers<br>
+					<br>
+					### Screenshots<br>
+					[Mobile view before/after attached]
+				</div>
+
+				<div class="badge">GitHub</div>
+				<div class="badge">Automation</div>
+				<div class="badge">PR</div>
+			</div>
+
+			<!-- Testing Examples -->
+			<div class="example-card">
+				<div class="example-title">🧪 Generate Tests for API Endpoint</div>
+				<div class="example-description">
+					Let FORGE analyze your API code and generate comprehensive tests.
+				</div>
+
+				<div class="example-step">
+					<strong>Source Code (api/users.js):</strong>
+				</div>
+				<pre><code>app.get('/api/users/:id', async (req, res) => {
+  try {
+    const user = await db.users.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    delete user.password;
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});</code></pre>
+
+				<div class="example-step">
+					<strong>Command:</strong>
+				</div>
+				<pre><code>forge test generate api/users.js --framework jest --coverage 90</code></pre>
+
+				<div class="example-step">
+					<strong>Generated Tests:</strong>
+				</div>
+				<div class="output">
+					```javascript<br>
+					describe('GET /api/users/:id', () => {<br>
+					&nbsp;&nbsp;it('should return user when found', async () => {<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;const mockUser = { id: 1, name: 'John', password: 'secret' };<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;db.users.findById.mockResolvedValue(mockUser);<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;const res = await request(app)<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.get('/api/users/1');<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;expect(res.status).toBe(200);<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;expect(res.body.password).toBeUndefined();<br>
+					&nbsp;&nbsp;});<br>
+					<br>
+					&nbsp;&nbsp;it('should return 404 when user not found', async () => {<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;db.users.findById.mockResolvedValue(null);<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;const res = await request(app)<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.get('/api/users/999');<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;expect(res.status).toBe(404);<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;expect(res.body.error).toBe('User not found');<br>
+					&nbsp;&nbsp;});<br>
+					<br>
+					&nbsp;&nbsp;it('should handle database errors', async () => {<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;db.users.findById.mockRejectedValue(new Error('DB down'));<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;const res = await request(app)<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.get('/api/users/1');<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;expect(res.status).toBe(500);<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;expect(res.body.error).toBe('Server error');<br>
+					&nbsp;&nbsp;});<br>
+					<br>
+					&nbsp;&nbsp;it('should validate ID parameter', async () => {<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;const res = await request(app)<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.get('/api/users/invalid');<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;expect(res.status).toBe(400);<br>
+					&nbsp;&nbsp;});<br>
+					});<br>
+				</div>
+
+				<div class="example-step">
+					<strong>Coverage Report:</strong>
+				</div>
+				<div class="output">
+					-------------------|---------|----------|---------|---------|<br>
+					File              | % Stmts | % Branch | % Funcs | % Lines |<br>
+					-------------------|---------|----------|---------|---------|<br>
+					users.js          |     100 |    88.88 |     100 |     100 |<br>
+					-------------------|---------|----------|---------|---------|<br>
+					All files         |     100 |    88.88 |     100 |     100 |<br>
+					-------------------|---------|----------|---------|---------|
+				</div>
+
+				<div class="badge">Jest</div>
+				<div class="badge">100% Coverage</div>
+				<div class="badge">Unit Tests</div>
+			</div>
+
+			<!-- AI Chat Examples -->
+			<div class="example-card">
+				<div class="example-title">💬 Context-Aware AI Chat</div>
+				<div class="example-description">
+					The AI Assistant sees your current context and provides relevant help.
+				</div>
+
+				<div class="example-step">
+					<strong>Current Context (visible to AI):</strong>
+				</div>
+				<div class="output">
+					📁 Current file: src/database/query.js<br>
+					📊 Active DB: mysql@localhost/forge<br>
+					⚡ Running services: Apache, MySQL, Redis<br>
+					🐘 PHP version: 8.2<br>
+					📦 Component: DatabaseBrowser
+				</div>
+
+				<div class="example-step">
+					<strong>User:</strong>
+					"Why is this query slow?"<br>
+					<strong>AI Response:</strong>
+				</div>
+				<div class="output">
+					🔍 Analyzing your query in database browser...<br>
+					<br>
+					I can see you're running this query on the 'forge' database:<br>
+					```sql<br>
+					SELECT * FROM orders o
+					<br>
+					LEFT JOIN customers c ON o.customer_id = c.id<br>
+					LEFT JOIN order_items i ON o.id = i.order_id<br>
+					WHERE o.created_at > '2024-01-01'<br>
+					```<br>
+					<br>
+					📊 Performance Analysis:<br>
+					- Full table scan on 'orders' (1.2M rows)<br>
+					- No index on 'created_at'<br>
+					- Retrieving all columns (*) when only 3 are needed<br>
+					<br>
+					💡 Suggestions:<br>
+					1. Add index: `CREATE INDEX idx_orders_created ON orders(created_at)`<br>
+					2. Select only needed columns instead of *<br>
+					3. Consider partitioning by date for large tables<br>
+					<br>
+					Would you like me to generate the optimized query for you?
+				</div>
+
+				<div class="badge">Context-Aware</div>
+				<div class="badge">Real-time</div>
+			</div>
+
+			<!-- End-to-End Workflow -->
+			<div class="example-card">
+				<div class="example-title">🚀 Complete Project Workflow</div>
+				<div class="example-description">
+					From idea to production - a complete FORGE workflow.
+				</div>
+
+				<pre><code># 1. Create a new project
+mkdir my-awesome-app && cd my-awesome-app
+
+# 2. Initialize with AI
+forge task "Create a new Node.js REST API with user auth and MySQL"
+
+# 3. FORGE generates the structure
+forge fs ls
+# Output:
+# 📁 src/
+#   ├── controllers/
+#   ├── models/
+#   ├── routes/
+#   ├── middleware/
+#   └── config/
+# 📄 package.json
+# 📄 README.md
+# 📄 .env.example
+
+# 4. Set up database
+forge db connect --init
+forge db migrate create users_table
+
+# 5. Write some code with AI help
+forge fs write src/controllers/auth.js --prompt "Add JWT authentication"
+
+# 6. Run and debug
+forge run dev
+forge test debug src/controllers/auth.js
+
+# 7. Generate tests
+forge test generate src/controllers/auth.js --coverage 90
+
+# 8. Commit to GitHub
+forge github init
+forge github commit "Initial commit with auth system"
+forge github push
+
+# 9. Create production build
+forge task "Prepare for production deployment"
+
+# 10. Deploy
+forge deploy aws --region us-east-1</code></pre>
+
+				<div class="badge">End-to-End</div>
+				<div class="badge">Production Ready</div>
+				<div class="badge">Best Practices</div>
+			</div>
+		</div>
+
+		<footer class="footer">
+			<p>
+				Made with ❤️ by
+				<a href="https://github.com/LebToki">Tarek Tarabichi</a>
+				from
+				<a href="https://2tinteractive.com">2TInteractive</a>
+				| 
+				            Powered by
+				<a href="https://deepseek.com">DeepSeek AI</a>
+			</p>
+			<p style="margin-top: 1rem;">
+				<a href="https://github.com/LebToki/forge-cli">GitHub</a>
+				•
+				<a href="https://www.npmjs.com/package/@2tinteractive/forge-cli">npm</a>
+				•
+				<a href="index.html">Documentation</a>
+				•
+				<a href="https://github.com/LebToki/forge-cli/issues">Report Issue</a>
+			</p>
+		</footer>
+	</body>
+</html>

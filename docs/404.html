@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>404 - Page Not Found | FORGE Documentation</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+				background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+				color: #fff;
+				min-height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				line-height: 1.6;
+			}
+
+			.glass-panel {
+				background: rgba(255, 255, 255, 0.03);
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.05);
+				border-radius: 30px;
+				padding: 3rem;
+				max-width: 600px;
+				text-align: center;
+				box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+			}
+
+			h1 {
+				font-size: 8rem;
+				font-weight: 800;
+				background: linear-gradient(135deg, #8B5CF6, #3B82F6, #EC4899);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				line-height: 1;
+				margin-bottom: 1rem;
+			}
+
+			h2 {
+				font-size: 2rem;
+				margin-bottom: 1rem;
+				color: rgba(255, 255, 255, 0.9);
+			}
+
+			p {
+				color: rgba(255, 255, 255, 0.6);
+				margin-bottom: 2rem;
+				font-size: 1.1rem;
+			}
+
+			.forge-anvil {
+				font-size: 5rem;
+				margin-bottom: 1rem;
+				animation: float 6s ease-in-out infinite;
+			}
+
+			@keyframes float {
+				0,
+				100% {
+					transform: translateY(0px);
+				}
+				50% {
+					transform: translateY(-20px);
+				}
+			}
+
+			.button-group {
+				display: flex;
+				gap: 1rem;
+				justify-content: center;
+				margin-top: 2rem;
+			}
+
+			.glass-button {
+				display: inline-block;
+				background: rgba(255, 255, 255, 0.05);
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 40px;
+				padding: 0.8rem 2rem;
+				color: white;
+				text-decoration: none;
+				transition: all 0.3s;
+				font-weight: 500;
+			}
+
+			.glass-button:hover {
+				background: rgba(139, 92, 246, 0.2);
+				border-color: #8B5CF6;
+				transform: translateY(-2px);
+			}
+
+			.glass-button.primary {
+				background: #8B5CF6;
+				border-color: #8B5CF6;
+			}
+
+			.glass-button.primary:hover {
+				background: #7C3AED;
+			}
+
+			.footer {
+				margin-top: 3rem;
+				font-size: 0.9rem;
+				color: rgba(255, 255, 255, 0.4);
+			}
+
+			.footer a {
+				color: #8B5CF6;
+				text-decoration: none;
+			}
+
+			.footer a:hover {
+				text-decoration: underline;
+			}
+
+			.sparkles {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				pointer-events: none;
+				overflow: hidden;
+			}
+
+			.sparkle {
+				position: absolute;
+				width: 6px;
+				height: 6px;
+				border-radius: 50%;
+				background: white;
+				animation: sparkle 3s infinite;
+			}
+
+			@keyframes sparkle {
+				0,
+				100% {
+					opacity: 0;
+					transform: scale(0);
+				}
+				50% {
+					opacity: 1;
+					transform: scale(1);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="sparkles">
+			<div class="sparkle" style="top: 20%; left: 20%; animation-delay: 0s;"></div>
+			<div class="sparkle" style="top: 80%; left: 80%; animation-delay: 1s;"></div>
+			<div class="sparkle" style="top: 40%; left: 60%; animation-delay: 2s;"></div>
+		</div>
+
+		<div class="glass-panel">
+			<div class="forge-anvil">🔨</div>
+			<h1>404</h1>
+			<h2>Page Not Found</h2>
+			<p>Looks like this code path doesn't exist. Even AI can't find it!</p>
+
+			<div class="button-group">
+				<a href="index.html" class="glass-button primary">🏠 Home</a>
+				<a href="getting-started.html" class="glass-button">🚀 Getting Started</a>
+				<a href="https://github.com/LebToki/forge-cli" class="glass-button">🐙 GitHub</a>
+			</div>
+
+			<div class="footer">
+				<p>
+					Made with ❤️ by
+					<a href="https://github.com/LebToki">Tarek Tarabichi</a>
+					from
+					<a href="https://2tinteractive.com">2TInteractive</a>
+					| 
+										                Powered by
+					<a href="https://deepseek.com">DeepSeek AI</a>
+				</p>
+				<p style="margin-top: 0.5rem;">
+					<a href="index.html">Documentation</a>
+					•
+					<a href="https://github.com/LebToki/forge-cli/issues">Report Issue</a>
+				</p>
+			</div>
+		</div>
+
+		<script>
+			// Random sparkle positions
+			setInterval( () => {
+
+
+
+				const sparkles = document.querySelectorAll( '.sparkle' );
+				sparkles.forEach( sparkle => {
+
+
+
+					sparkle.style.top = Math.random() * 100 + '%';
+					sparkle.style.left = Math.random() * 100 + '%';
+
+
+
+				} );
+
+
+
+			}, 3000 );
+		</script>
+	</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Getting Started - FORGE Documentation</title>
+		<style>
+			/* Same glassmorphic styles as above */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Inter', sans-serif;
+				background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+				color: #fff;
+				line-height: 1.6;
+			}
+
+			.glass-nav {
+				background: rgba(255, 255, 255, 0.05);
+				backdrop-filter: blur(10px);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				position: sticky;
+				top: 0;
+				z-index: 100;
+			}
+
+			.nav-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 1rem 2rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.logo {
+				font-size: 1.5rem;
+				font-weight: bold;
+				background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			.nav-links a {
+				color: rgba(255, 255, 255, 0.8);
+				text-decoration: none;
+				margin-left: 2rem;
+				font-size: 0.9rem;
+			}
+
+			.container {
+				max-width: 1000px;
+				margin: 4rem auto;
+				padding: 0 2rem;
+			}
+
+			.glass-panel {
+				background: rgba(255, 255, 255, 0.03);
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.05);
+				border-radius: 20px;
+				padding: 2rem;
+				margin-bottom: 2rem;
+			}
+
+			h1 {
+				font-size: 2.5rem;
+				margin-bottom: 1rem;
+				background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			h2 {
+				font-size: 1.8rem;
+				margin: 2rem 0 1rem;
+				color: #8B5CF6;
+			}
+
+			h3 {
+				font-size: 1.3rem;
+				margin: 1.5rem 0 0.5rem;
+				color: #3B82F6;
+			}
+
+			p {
+				margin-bottom: 1rem;
+				color: rgba(255, 255, 255, 0.8);
+			}
+
+			code {
+				background: rgba(0, 0, 0, 0.3);
+				padding: 0.2rem 0.4rem;
+				border-radius: 4px;
+				font-family: 'Fira Code', monospace;
+				color: #EC4899;
+			}
+
+			pre {
+				background: rgba(0, 0, 0, 0.3);
+				padding: 1rem;
+				border-radius: 8px;
+				overflow-x: auto;
+				margin: 1rem 0;
+				border: 1px solid rgba(255, 255, 255, 0.05);
+			}
+
+			.step {
+				display: flex;
+				margin-bottom: 2rem;
+				align-items: flex-start;
+			}
+
+			.step-number {
+				background: #8B5CF6;
+				width: 30px;
+				height: 30px;
+				border-radius: 15px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-right: 1rem;
+				flex-shrink: 0;
+			}
+
+			.step-content {
+				flex: 1;
+			}
+
+			.note {
+				background: rgba(139, 92, 246, 0.1);
+				border-left: 4px solid #8B5CF6;
+				padding: 1rem;
+				margin: 1rem 0;
+				border-radius: 4px;
+			}
+
+			.footer {
+				background: rgba(0, 0, 0, 0.3);
+				backdrop-filter: blur(10px);
+				border-top: 1px solid rgba(255, 255, 255, 0.05);
+				padding: 2rem;
+				text-align: center;
+				color: rgba(255, 255, 255, 0.5);
+			}
+
+			.footer a {
+				color: #8B5CF6;
+				text-decoration: none;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="glass-nav">
+			<div class="nav-container">
+				<div class="logo">🔥 FORGE</div>
+				<div class="nav-links">
+					<a href="index.html">Home</a>
+					<a href="getting-started.html">Getting Started</a>
+					<a href="configuration.html">Configuration</a>
+					<a href="github-integration.html">GitHub</a>
+					<a href="https://github.com/LebToki/forge-cli">GitHub</a>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container">
+			<h1>Getting Started with FORGE</h1>
+			<p>Install FORGE, set up your API keys, and run your first AI-powered command in 5 minutes.</p>
+
+			<div class="glass-panel">
+				<h2>Prerequisites</h2>
+				<ul style="margin-left: 1.5rem; color: rgba(255,255,255,0.8);">
+					<li>Node.js 18 or higher</li>
+					<li>npm or yarn package manager</li>
+					<li>DeepSeek API key (free)</li>
+					<li>GitHub token (optional, for GitHub features)</li>
+				</ul>
+			</div>
+
+			<div class="step">
+				<div class="step-number">1</div>
+				<div class="step-content">
+					<h3>Install FORGE globally</h3>
+					<pre><code>npm install -g @2tinteractive/forge-cli</code></pre>
+					<p>Or if you prefer yarn:</p>
+					<pre><code>yarn global add @2tinteractive/forge-cli</code></pre>
+
+					<div class="note">
+						<strong>💡 Tip:</strong>
+						You can also use npx for one-off commands without installation:
+						<pre><code>npx @2tinteractive/forge-cli ask "Hello"</code></pre>
+					</div>
+				</div>
+			</div>
+
+			<div class="step">
+				<div class="step-number">2</div>
+				<div class="step-content">
+					<h3>Get your DeepSeek API key</h3>
+					<p>1. Visit
+						<a href="https://platform.deepseek.com/api_keys" style="color: #8B5CF6;">DeepSeek Platform</a>
+					</p>
+					<p>2. Sign up or log in</p>
+					<p>3. Create a new API key</p>
+					<p>4. Copy the key (starts with
+						<code>sk-</code>)</p>
+				</div>
+			</div>
+
+			<div class="step">
+				<div class="step-number">3</div>
+				<div class="step-content">
+					<h3>Set up your API key</h3>
+					<p>Option A: Environment variable (recommended for security)</p>
+					<pre><code>export DEEPSEEK_API_KEY="your-key-here"</code></pre>
+
+					<p>Option B: Use FORGE config (stored securely in keychain)</p>
+					<pre><code>forge config set deepseek.api_key your-key-here</code></pre>
+
+					<div class="note">
+						<strong>🔒 Security:</strong>
+						Your API key is never shared and stays on your machine.
+					</div>
+				</div>
+			</div>
+
+			<div class="step">
+				<div class="step-number">4</div>
+				<div class="step-content">
+					<h3>Verify installation</h3>
+					<pre><code>forge --version</code></pre>
+					<p>You should see:
+						<code>FORGE version 1.0.0</code>
+					</p>
+
+					<pre><code>forge ask "Hello, what can you help me with?"</code></pre>
+					<p>You should see a streaming response from DeepSeek AI!</p>
+				</div>
+			</div>
+
+			<div class="glass-panel">
+				<h2>Next Steps</h2>
+				<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+					<div style="padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 10px;">
+						<strong>📁 File Operations</strong>
+						<p style="font-size: 0.9rem; margin-top: 0.5rem;">Learn to read, write, and edit files with AI</p>
+						<code>forge fs cat README.md</code>
+					</div>
+					<div style="padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 10px;">
+						<strong>🐘 PHP Development</strong>
+						<p style="font-size: 0.9rem; margin-top: 0.5rem;">Generate WordPress plugins and themes</p>
+						<code>forge php generate-plugin "Contact Form"</code>
+					</div>
+					<div style="padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 10px;">
+						<strong>🐙 GitHub Integration</strong>
+						<p style="font-size: 0.9rem; margin-top: 0.5rem;">Clone repos and create PRs</p>
+						<code>forge github clone username/repo</code>
+					</div>
+					<div style="padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 10px;">
+						<strong>📊 Database</strong>
+						<p style="font-size: 0.9rem; margin-top: 0.5rem;">Optimize MySQL queries with AI</p>
+						<code>forge db optimize "SELECT * FROM users"</code>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer class="footer">
+			<p>
+				Made with ❤️ by
+				<a href="https://github.com/LebToki">Tarek Tarabichi</a>
+				from
+				<a href="https://2tinteractive.com">2TInteractive</a>
+				| 
+								            Powered by
+				<a href="https://deepseek.com">DeepSeek AI</a>
+			</p>
+		</footer>
+	</body>
+</html>

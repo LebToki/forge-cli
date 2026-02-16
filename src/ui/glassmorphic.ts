@@ -1,9 +1,11 @@
-import chalk from 'chalk';
+// @ts-ignore - chalk-animation has no types
 import chalkAnimation from 'chalk-animation';
+// @ts-ignore - gradient-string has no types
 import gradient from 'gradient-string';
+import chalk from 'chalk';
 import figlet from 'figlet';
 import boxen from 'boxen';
-import { createSpinner } from 'nanospinner';
+import ora from 'ora';
 
 // Glassmorphic color schemes
 export const glassTheme = {
@@ -46,7 +48,11 @@ export async function showGlassBanner(): Promise<void> {
 
 // Glassmorphic spinner
 export function glassSpinner(text: string) {
-  return createSpinner(gradient(['#8ec5fc', '#e0c3fc'])(text));
+  return ora({
+    text: gradient(['#8ec5fc', '#e0c3fc'])(text),
+    color: 'cyan',
+    spinner: 'dots'
+  });
 }
 
 // Glassmorphic panel

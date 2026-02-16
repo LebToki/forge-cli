@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>GitHub Integration - FORGE Documentation</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+				background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+				color: #fff;
+				line-height: 1.6;
+			}
+
+			.glass-nav {
+				background: rgba(255, 255, 255, 0.05);
+				backdrop-filter: blur(10px);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				position: sticky;
+				top: 0;
+				z-index: 100;
+			}
+
+			.nav-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 1rem 2rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.logo {
+				font-size: 1.5rem;
+				font-weight: bold;
+				background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			.nav-links a {
+				color: rgba(255, 255, 255, 0.8);
+				text-decoration: none;
+				margin-left: 2rem;
+				font-size: 0.9rem;
+				transition: color 0.3s;
+			}
+
+			.nav-links a:hover {
+				color: #8B5CF6;
+			}
+
+			.container {
+				max-width: 1000px;
+				margin: 4rem auto;
+				padding: 0 2rem;
+			}
+
+			h1 {
+				font-size: 2.5rem;
+				margin-bottom: 1rem;
+				background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			h2 {
+				font-size: 1.8rem;
+				margin: 2rem 0 1rem;
+				color: #8B5CF6;
+			}
+
+			h3 {
+				font-size: 1.3rem;
+				margin: 1.5rem 0 0.5rem;
+				color: #3B82F6;
+			}
+
+			p {
+				margin-bottom: 1rem;
+				color: rgba(255, 255, 255, 0.8);
+			}
+
+			code {
+				background: rgba(0, 0, 0, 0.3);
+				padding: 0.2rem 0.4rem;
+				border-radius: 4px;
+				font-family: 'Fira Code', monospace;
+				color: #EC4899;
+			}
+
+			pre {
+				background: rgba(0, 0, 0, 0.3);
+				padding: 1rem;
+				border-radius: 8px;
+				overflow-x: auto;
+				margin: 1rem 0;
+				border: 1px solid rgba(255, 255, 255, 0.05);
+			}
+
+			.glass-panel {
+				background: rgba(255, 255, 255, 0.03);
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.05);
+				border-radius: 20px;
+				padding: 2rem;
+				margin-bottom: 2rem;
+			}
+
+			.command-card {
+				background: rgba(255, 255, 255, 0.02);
+				border-radius: 10px;
+				padding: 1.5rem;
+				margin-bottom: 1rem;
+				border-left: 4px solid #8B5CF6;
+			}
+
+			.command-title {
+				font-size: 1.2rem;
+				font-weight: bold;
+				color: #8B5CF6;
+				margin-bottom: 0.5rem;
+			}
+
+			.command-desc {
+				color: rgba(255, 255, 255, 0.7);
+				margin-bottom: 0.5rem;
+			}
+
+			.command-example {
+				background: rgba(0, 0, 0, 0.2);
+				padding: 0.5rem;
+				border-radius: 4px;
+				font-family: monospace;
+				color: #EC4899;
+			}
+
+			.badge {
+				display: inline-block;
+				background: rgba(139, 92, 246, 0.2);
+				border: 1px solid rgba(139, 92, 246, 0.3);
+				border-radius: 20px;
+				padding: 0.2rem 0.8rem;
+				font-size: 0.8rem;
+				margin-right: 0.5rem;
+			}
+
+			.step {
+				display: flex;
+				margin-bottom: 2rem;
+				align-items: flex-start;
+			}
+
+			.step-number {
+				background: #8B5CF6;
+				width: 30px;
+				height: 30px;
+				border-radius: 15px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-right: 1rem;
+				flex-shrink: 0;
+			}
+
+			.note {
+				background: rgba(139, 92, 246, 0.1);
+				border-left: 4px solid #8B5CF6;
+				padding: 1rem;
+				margin: 1rem 0;
+				border-radius: 4px;
+			}
+
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 1rem 0;
+			}
+
+			th,
+			td {
+				padding: 0.75rem;
+				text-align: left;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+			}
+
+			th {
+				color: #8B5CF6;
+				font-weight: 500;
+			}
+
+			.footer {
+				background: rgba(0, 0, 0, 0.3);
+				backdrop-filter: blur(10px);
+				border-top: 1px solid rgba(255, 255, 255, 0.05);
+				padding: 2rem;
+				text-align: center;
+				color: rgba(255, 255, 255, 0.5);
+				margin-top: 4rem;
+			}
+
+			.footer a {
+				color: #8B5CF6;
+				text-decoration: none;
+			}
+
+			.footer a:hover {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="glass-nav">
+			<div class="nav-container">
+				<div class="logo">🔥 FORGE</div>
+				<div class="nav-links">
+					<a href="index.html">Home</a>
+					<a href="getting-started.html">Getting Started</a>
+					<a href="configuration.html">Config</a>
+					<a href="github-integration.html">GitHub</a>
+					<a href="tool-reference.html">Tools</a>
+					<a href="examples.html">Examples</a>
+					<a href="https://github.com/LebToki/forge-cli">GitHub</a>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container">
+			<h1>GitHub Integration</h1>
+			<p>Connect FORGE to GitHub for seamless repository management, PR creation, and AI-powered automation.</p>
+
+			<div class="glass-panel">
+				<h2>Authentication</h2>
+
+				<div class="step">
+					<div class="step-number">1</div>
+					<div class="step-content">
+						<h3>Generate a GitHub Token</h3>
+						<p>Go to
+							<a href="https://github.com/settings/tokens" style="color: #8B5CF6;">GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)</a>
+						</p>
+						<p>Click "Generate new token" and select these scopes:</p>
+						<ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+							<li>
+								<code>repo</code>
+								- Full control of private repositories</li>
+							<li>
+								<code>workflow</code>
+								- Update GitHub Action workflows</li>
+							<li>
+								<code>write:packages</code>
+								- Publish packages</li>
+							<li>
+								<code>delete:packages</code>
+								- Delete packages</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="step">
+					<div class="step-number">2</div>
+					<div class="step-content">
+						<h3>Authenticate with FORGE</h3>
+						<pre><code>forge github auth</code></pre>
+						<p>You'll be prompted to enter your token. It will be stored securely in your system keychain.</p>
+					</div>
+				</div>
+
+				<div class="step">
+					<div class="step-number">3</div>
+					<div class="step-content">
+						<h3>Verify Authentication</h3>
+						<pre><code>forge github list</code></pre>
+						<p>This should display your repositories if authentication was successful.</p>
+					</div>
+				</div>
+
+				<div class="note">
+					<strong>🔐 Security:</strong>
+					Your token is never shared and is encrypted in your system's keychain. FORGE never sends your token to any server except GitHub's API.
+				</div>
+			</div>
+
+			<h2>Repository Management</h2>
+
+			<div class="command-card">
+				<div class="command-title">📋 List Repositories</div>
+				<div class="command-desc">View all your GitHub repositories with details</div>
+				<pre><code>forge github list</code></pre>
+				<pre><code>forge github list --type all --sort updated</code></pre>
+				<div class="command-example">Example output: owner/repo-name • 🔒 private • ⭐ 42 stars • Updated 2 days ago</div>
+			</div>
+
+			<div class="command-card">
+				<div class="command-title">📥 Clone Repository</div>
+				<div class="command-desc">Clone a repository locally with AI-powered analysis</div>
+				<pre><code>forge github clone owner/repo-name</code></pre>
+				<pre><code>forge github clone owner/repo-name --branch develop --path ./projects</code></pre>
+				<div class="command-example">Automatically detects and suggests optimal clone settings based on repo size</div>
+			</div>
+
+			<div class="command-card">
+				<div class="command-title">🔍 Repository Info</div>
+				<div class="command-desc">Get detailed information about a repository</div>
+				<pre><code>forge github info owner/repo-name</code></pre>
+				<div class="command-example">Shows stats, languages, contributors, and AI-powered insights</div>
+			</div>
+
+			<h2>Branch Management</h2>
+
+			<div class="command-card">
+				<div class="command-title">🌿 Create Branch</div>
+				<div class="command-desc">Create and switch to a new branch with AI-suggested naming</div>
+				<pre><code>forge github branch feature/awesome-feature</code></pre>
+				<pre><code>forge github branch hotfix/login-bug --from-branch main</code></pre>
+			</div>
+
+			<div class="command-card">
+				<div class="command-title">📊 Branch Status</div>
+				<div class="command-desc">Show current branch and changes with AI analysis</div>
+				<pre><code>forge github status</code></pre>
+				<div class="command-example">AI highlights potential issues and suggests commit messages</div>
+			</div>
+
+			<h2>Commits with AI</h2>
+
+			<div class="command-card">
+				<div class="command-title">💾 AI-Powered Commit</div>
+				<div class="command-desc">FORGE analyzes your changes and generates meaningful commit messages</div>
+				<pre><code>forge github commit "Fix login bug"</code></pre>
+				<pre><code>forge github commit --ai-only  # Generate message from changes</code></pre>
+
+				<div style="margin-top: 1rem; background: rgba(139, 92, 246, 0.1); padding: 1rem; border-radius: 8px;">
+					<strong>🤖 AI Enhancement Example:</strong>
+					<p style="margin-top: 0.5rem;">Your message:
+						<code>"Fix login bug"</code>
+					</p>
+					<p>AI enhanced:
+						<code>"fix(auth): resolve session timeout issue in login flow</code>
+					</p>
+					<p>
+						<code>- Add proper error handling for expired tokens</code>
+					</p>
+					<p>
+						<code>- Update session refresh logic to prevent premature logout</code>
+					</p>
+					<p>
+						<code>- Add tests for session edge cases"</code>
+					</p>
+				</div>
+			</div>
+
+			<div class="command-card">
+				<div class="command-title">⬆️ Push Changes</div>
+				<div class="command-desc">Push commits to remote with safety checks</div>
+				<pre><code>forge github push</code></pre>
+				<pre><code>forge github push --force  # Use with caution</code></pre>
+			</div>
+
+			<h2>Pull Requests</h2>
+
+			<div class="command-card">
+				<div class="command-title">✨ Create PR with AI</div>
+				<div class="command-desc">FORGE generates comprehensive PR descriptions based on your changes</div>
+				<pre><code>forge github pr-create "Add user authentication" --head feature/auth --base main</code></pre>
+				<pre><code>forge github pr-create --ai-only  # Generate from current branch</code></pre>
+
+				<div style="margin-top: 1rem; background: rgba(139, 92, 246, 0.1); padding: 1rem; border-radius: 8px;">
+					<strong>📝 AI-Generated PR Description:</strong>
+					<pre style="margin-top: 0.5rem; background: rgba(0,0,0,0.2);">
+## Description
+This PR adds JWT-based authentication with refresh tokens.
+
+## Changes
+- ✅ Implement login/logout endpoints
+- ✅ Add token refresh mechanism
+- ✅ Secure routes with auth middleware
+- ✅ Add rate limiting for auth attempts
+
+## Testing
+- [x] Unit tests for auth service
+- [x] Integration tests for endpoints
+- [x] Manual testing with Postman
+
+## Screenshots
+[Auth flow diagram]
+
+## Related Issues
+Closes #123, #456
+                </pre>
+				</div>
+			</div>
+
+			<div class="command-card">
+				<div class="command-title">📋 List PRs</div>
+				<div class="command-desc">View all pull requests with AI-powered summaries</div>
+				<pre><code>forge github pr-list owner/repo-name</code></pre>
+				<pre><code>forge github pr-list --state closed --limit 10</code></pre>
+			</div>
+
+			<div class="command-card">
+				<div class="command-title">🔍 View PR Details</div>
+				<div class="command-desc">Get detailed PR information with AI analysis</div>
+				<pre><code>forge github pr-show owner/repo-name 42</code></pre>
+				<div class="command-example">Shows files changed, comments, and AI-suggested review points</div>
+			</div>
+
+			<div class="command-card">
+				<div class="command-title">✅ Merge PR</div>
+				<div class="command-desc">Merge pull requests with various strategies</div>
+				<pre><code>forge github pr-merge owner/repo-name 42</code></pre>
+				<pre><code>forge github pr-merge owner/repo-name 42 --method squash</code></pre>
+			</div>
+
+			<h2>Issues</h2>
+
+			<div class="command-card">
+				<div class="command-title">📝 Create Issue</div>
+				<div class="command-desc">Create issues with AI-suggested templates</div>
+				<pre><code>forge github issue-create "Bug in login" --repo owner/repo-name</code></pre>
+				<pre><code>forge github issue-create --from-error  # Create from last error</code></pre>
+			</div>
+
+			<div class="command-card">
+				<div class="command-title">📋 List Issues</div>
+				<div class="command-desc">View issues with AI-powered categorization</div>
+				<pre><code>forge github issue-list owner/repo-name</code></pre>
+				<pre><code>forge github issue-list --label bug --assignee @me</code></pre>
+			</div>
+
+			<h2>AI-Powered Automation</h2>
+
+			<div class="glass-panel">
+				<h3>🤖 Smart Workflows</h3>
+
+				<div class="command-card">
+					<div class="command-title">Fix Issue and Create PR</div>
+					<pre><code>forge github fix-issue owner/repo-name 123</code></pre>
+					<p>FORGE will:</p>
+					<ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+						<li>Analyze the issue description</li>
+						<li>Find relevant code files</li>
+						<li>Generate a fix using AI</li>
+						<li>Create a branch with the fix</li>
+						<li>Commit changes</li>
+						<li>Open a PR with description</li>
+						<li>Link PR to the issue</li>
+					</ol>
+				</div>
+
+				<div class="command-card">
+					<div class="command-title">Review PR with AI</div>
+					<pre><code>forge github review-pr owner/repo-name 42</code></pre>
+					<p>AI analyzes the PR and provides:</p>
+					<ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+						<li>Code quality assessment</li>
+						<li>Potential bugs</li>
+						<li>Performance issues</li>
+						<li>Security concerns</li>
+						<li>Style violations</li>
+					</ul>
+				</div>
+
+				<div class="command-card">
+					<div class="command-title">Generate Changelog</div>
+					<pre><code>forge github changelog owner/repo-name --from v1.0.0 --to v1.1.0</code></pre>
+					<p>AI creates a human-readable changelog from commits and PRs.</p>
+				</div>
+			</div>
+
+			<div class="glass-panel">
+				<h2>Configuration Reference</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Setting</th>
+							<th>Description</th>
+							<th>Default</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<code>github.token</code>
+							</td>
+							<td>GitHub personal access token</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>
+								<code>github.default_remote</code>
+							</td>
+							<td>Default remote name</td>
+							<td>origin</td>
+						</tr>
+						<tr>
+							<td>
+								<code>github.auto_fetch</code>
+							</td>
+							<td>Auto-fetch before operations</td>
+							<td>true</td>
+						</tr>
+						<tr>
+							<td>
+								<code>github.pr_template</code>
+							</td>
+							<td>Custom PR template path</td>
+							<td>.github/PULL_REQUEST_TEMPLATE.md</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<footer class="footer">
+			<p>
+				Made with ❤️ by
+				<a href="https://github.com/LebToki">Tarek Tarabichi</a>
+				from
+				<a href="https://2tinteractive.com">2TInteractive</a>
+				| 
+				            Powered by
+				<a href="https://deepseek.com">DeepSeek AI</a>
+			</p>
+			<p style="margin-top: 1rem;">
+				<a href="https://github.com/LebToki/forge-cli">GitHub</a>
+				•
+				<a href="https://www.npmjs.com/package/@2tinteractive/forge-cli">npm</a>
+				•
+				<a href="#">Documentation</a>
+				•
+				<a href="#">Report Issue</a>
+			</p>
+		</footer>
+	</body>
+</html>
