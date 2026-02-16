@@ -16,6 +16,7 @@ from forge.core.llm import DeepSeekClient
 from forge import __version__
 from forge.cli.fs import fs
 from forge.cli.run import run
+from forge.cli.github import github
 
 console = Console()
 
@@ -176,6 +177,7 @@ def task(description):
 # Register subcommands
 cli.add_command(fs)
 cli.add_command(run)
+cli.add_command(github)
 
 
 if __name__ == '__main__':
