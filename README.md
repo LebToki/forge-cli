@@ -1,7 +1,8 @@
 # 🔥 FORGE
 
 <div align="center">
- <img width="1200" height="630" alt="FORGE-BANNER" src="https://github.com/user-attachments/assets/280053af-15cc-4adc-b245-84d7265c5151" />
+  <img width="1200" height="630" alt="FORGE-BANNER" src="https://github.com/user-attachments/assets/d7d01338-f310-40c9-a9bd-f692be5787c3" />
+
 
   
   **Shape code. Ship faster. Forge the future.**
