@@ -50,3 +50,22 @@ logs/
 *.log
 
 .env
+
+
+#docs
+docs/landing/
+docs/__PLANNER.md
+docs/__PUBLISHING_ON_NPM.md
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# Build output
+dist/
