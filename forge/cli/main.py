@@ -17,6 +17,7 @@ from forge import __version__
 from forge.cli.fs import fs
 from forge.cli.run import run
 from forge.cli.github import github
+from forge.cli.test import test
 
 console = Console()
 
@@ -178,6 +179,7 @@ def task(description):
 cli.add_command(fs)
 cli.add_command(run)
 cli.add_command(github)
+cli.add_command(test)
 
 
 if __name__ == '__main__':
