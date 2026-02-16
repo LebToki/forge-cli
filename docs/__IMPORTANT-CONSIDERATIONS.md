@@ -1,4 +1,5 @@
-🌟 FORGE as an AI Agent Framework
+# 🌟 FORGE as an AI Agent Framework
+
 Look at what's already in your codebase:
 
 1. AI-Native Component Architecture
@@ -27,7 +28,8 @@ const tools = [{
     parameters: { ... }
   }
 }];
-3. Multi-Agent Orchestration
+
+1. Multi-Agent Orchestration
 The agent-forge npm package shows exactly where you're headed:
 
 typescript
@@ -44,7 +46,8 @@ const team = forge.createTeam("Manager")
   .addAgent(summarizer);
 
 const result = await team.run("Complex task...");
-4. Workflow Engine
+
+1. Workflow Engine
 Your task command is already a primitive workflow engine. Extend it:
 
 javascript
@@ -59,7 +62,11 @@ forge.task(`
   agents: ["researcher", "writer", "presenter", "email"],
   parallel: true
 });
-🚀 FORGE → The 2027 AI Agent Vision
+
+---
+
+# 🚀 FORGE → The 2027 AI Agent Vision
+
 Here's how FORGE evolves into the next DROOPER:
 
 Phase 6: Multi-Agent Orchestration (Add Now)
@@ -231,7 +238,10 @@ Launch agent marketplace
 
 Build visual agent composer (use your glass UI!)
 
-💡 The Vision: FORGE 2027
+---
+
+# 💡 The Vision: FORGE 2027
+
 bash
 
 # What developers will say in 2027
@@ -255,7 +265,11 @@ forge agent create "social-media-manager"
 # One command, a full team of AI agents
 
 forge deploy --platform all
-🔥 Why FORGE Will Win
+
+---
+
+# 🔥 Why FORGE Will Win
+
 You already have the foundation - AI-native components, manifests, tool calling
 
 You're not limited to one domain - PHP, MySQL, GitHub, file system - your agents can do ANYTHING
@@ -272,7 +286,8 @@ FORGE isn't a PHP tool. It's an agent operating system that happens to have PHP 
 
 ---
 
-🏗️ FORGE Agent Architecture - Directory Structure
+# 🏗️ FORGE Agent Architecture - Directory Structure
+
 YES! This is exactly the foundation FORGE needs to become the "DROOPER of 2027". Here's how to structure it:
 
 Complete Agent Directory Structure
@@ -396,7 +411,10 @@ E:\platform\.agent\
         ├── config.json
         ├── team-composition.js
         └── handoff-rules.json
-🎯 Key Files to Create Immediately
+
+---
+
+# 🎯 Key Files to Create Immediately
 
 1. E:\platform\.agent\shared\templates\agent-prompt.md
 markdown
@@ -638,3 +656,134 @@ FORGE isn't just a dev tool anymore. It's an agent operating system. 🔥
 ---
 
 # AgentOrchestrator class
+
+## E:\platform\.agent\core\AgentOrchestrator.js
+
+import { getOrchestrator } from './core/AgentOrchestrator.js';
+
+async function main() {
+    // Initialize orchestrator
+    const forge = getOrchestrator('E:/platform/.agent/');
+    await forge.initialize();
+
+    // Single agent task
+    const result1 = await forge.executeTask(
+        "Generate a WordPress contact form plugin with AJAX",
+        { agent: "WordPressExpert" }
+    );
+    console.log('WordPress plugin:', result1);
+
+    // Multi-agent team task
+    const result2 = await forge.executeTask(
+        "Debug and fix the login issue in our app",
+        {
+            team: ["Debugger", "Coder", "Tester"],
+            context: {
+                errorLog: "TypeError: Cannot read property 'user' of undefined",
+                files: ["src/auth.js", "src/login.jsx"]
+            }
+        }
+    );
+    console.log('Debug result:', result2);
+
+    // Workflow execution
+    const result3 = await forge.executeTask(
+        "Deploy to production",
+        {
+            workflow: "deploy-workflow",
+            context: {
+                environment: "production",
+                version: "1.2.3"
+            }
+        }
+    );
+    console.log('Deployment:', result3);
+
+    // Auto-select best agent
+    const result4 = await forge.executeTask(
+        "Research quantum computing and write a summary",
+        { parallel: true }
+    );
+    console.log('Research:', result4);
+
+    // Get orchestrator status
+    console.log('Status:', forge.getStatus());
+}
+
+main().catch(console.error);
+
+# test-agent.js
+
+import { getOrchestrator } from './core/AgentOrchestrator.js';
+
+async function main() {
+    // Initialize orchestrator
+    const forge = getOrchestrator('E:/platform/.agent/');
+    await forge.initialize();
+
+    // Single agent task
+    const result1 = await forge.executeTask(
+        "Generate a WordPress contact form plugin with AJAX",
+        { agent: "WordPressExpert" }
+    );
+    console.log('WordPress plugin:', result1);
+
+    // Multi-agent team task
+    const result2 = await forge.executeTask(
+        "Debug and fix the login issue in our app",
+        {
+            team: ["Debugger", "Coder", "Tester"],
+            context: {
+                errorLog: "TypeError: Cannot read property 'user' of undefined",
+                files: ["src/auth.js", "src/login.jsx"]
+            }
+        }
+    );
+    console.log('Debug result:', result2);
+
+    // Workflow execution
+    const result3 = await forge.executeTask(
+        "Deploy to production",
+        {
+            workflow: "deploy-workflow",
+            context: {
+                environment: "production",
+                version: "1.2.3"
+            }
+        }
+    );
+    console.log('Deployment:', result3);
+
+    // Auto-select best agent
+    const result4 = await forge.executeTask(
+        "Research quantum computing and write a summary",
+        { parallel: true }
+    );
+    console.log('Research:', result4);
+
+    // Get orchestrator status
+    console.log('Status:', forge.getStatus());
+}
+
+main().catch(console.error);
+
+---
+
+🎯 What This Enables
+With this AgentOrchestrator, FORGE can now:
+
+Create Multi-Agent Teams - Manager + Researcher + Coder + Tester working together
+Execute Complex Workflows - Multi-step processes with parallel execution
+Learn from Experience - Memory system with vector search
+Enforce Rules & Permissions - Security, ethics, rate limits
+Auto-Select Agents - Automatically picks the right agent for the task
+Recover from Failures - Manager agents can handle errors
+Optimize Prompts - Self-improvement based on successful patterns
+
+🚀 Next Steps
+Create the directory structure on your system
+Add skill implementations in /skills/core/
+Create workflow templates in /workflows/templates/
+Test with your existing tasks (WordPress, MySQL, GitHub)
+Connect to your glass UI for visual agent building
+Your FORGE is now a true Agent Operating System! 🔥🤖
