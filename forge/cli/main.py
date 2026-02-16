@@ -14,6 +14,7 @@ from rich import print as rprint
 
 from forge.core.llm import DeepSeekClient
 from forge import __version__
+from forge.cli.fs import fs
 
 console = Console()
 
@@ -169,6 +170,10 @@ def task(description):
     console.print("  • Create commits")
     console.print("  • Open pull requests")
     console.print("\n[cyan]Stay tuned for Phase 2![/cyan]")
+
+
+# Register subcommands
+cli.add_command(fs)
 
 
 if __name__ == '__main__':
