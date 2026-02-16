@@ -15,6 +15,7 @@ from rich import print as rprint
 from forge.core.llm import DeepSeekClient
 from forge import __version__
 from forge.cli.fs import fs
+from forge.cli.run import run
 
 console = Console()
 
@@ -174,6 +175,7 @@ def task(description):
 
 # Register subcommands
 cli.add_command(fs)
+cli.add_command(run)
 
 
 if __name__ == '__main__':
