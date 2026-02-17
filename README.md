@@ -1,7 +1,9 @@
 # 🔥 FORGE
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/LebToki/forge-cli/main/docs/assets/forge-banner.png" alt="Forge Banner" width="600">
+  <img width="1200" height="630" alt="FORGE-BANNER" src="https://github.com/user-attachments/assets/d7d01338-f310-40c9-a9bd-f692be5787c3" />
+
+
   
   **Shape code. Ship faster. Forge the future.**
   
