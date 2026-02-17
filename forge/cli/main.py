@@ -18,8 +18,10 @@ from forge.cli.fs import fs
 from forge.cli.run import run
 from forge.cli.github import github
 from forge.cli.test import test
+from forge.config import get_config
 
 console = Console()
+config = get_config()
 
 
 def show_banner():
@@ -133,30 +135,62 @@ def config():
 @click.argument('value')
 def set_config(key, value):
     """Set a configuration value (e.g., deepseek.api_key YOUR_KEY)."""
-    # For now, just show what would happen
-    console.print(f"[yellow]Note:[/yellow] Config storage coming soon!")
-    console.print(f"Would set: [cyan]{key} = {value}[/cyan]")
-    
-    # In the future, this will write to ~/.forge/config.toml
-    config_dir = Path.home() / ".forge"
-    config_dir.mkdir(exist_ok=True)
-    console.print(f"Future config location: [dim]{config_dir / 'config.toml'}[/dim]")
+    try:
+        cfg = get_config()
+        cfg.set(key, value)
+        console.print(f"[green]✓[/green] Set [cyan]{key}[/cyan] = [bold]{value}[/bold]")
+        console.print(f"\n[dim]Stored in: {cfg.config_file}[/dim]")
+    except Exception as e:
+        console.print(f"[red]Error:[/red] {e}")
 
 
 @config.command('list')
 def list_config():
     """List all configuration values."""
-    console.print("[bold]Current Configuration:[/bold]\n")
-    console.print("  [yellow]deepseek.api_key[/yellow] = ", end="")
-    if os.getenv('DEEPSEEK_API_KEY'):
-        console.print("[green]✓ set via environment[/green]")
-    else:
-        console.print("[red]not set[/red] (use DEEPSEEK_API_KEY env var)")
+    cfg = get_config()
+    all_config = cfg.list_all()
     
-    console.print("\n[bold]Environment:[/bold]")
-    has_key = os.getenv('DEEPSEEK_API_KEY')
-    status = "[green]present[/green]" if has_key else "[red]missing[/red]"
-    console.print(f"  DEEPSEEK_API_KEY: {status}")
+    console.print("[bold]Current Configuration:[/bold]\n")
+    
+    # DeepSeek section
+    deepseek = all_config.get('deepseek', {})
+    console.print("[bold cyan]DeepSeek:[/bold cyan]")
+    for key, value in deepseek.items():
+        if key == 'api_key':
+            status = "[green]✓ set[/green]" if value else "[red]not set[/red]"
+            console.print(f"  {key}: {status}")
+        else:
+            console.print(f"  {key}: {value}")
+    
+    # GitHub section
+    github_cfg = all_config.get('github', {})
+    console.print("\n[bold cyan]GitHub:[/bold cyan]")
+    for key, value in github_cfg.items():
+        if key == 'token':
+            status = "[green]✓ set[/green]" if value else "[red]not set[/red]"
+            console.print(f"  {key}: {status}")
+        else:
+            console.print(f"  {key}: {value}")
+    
+    # General section
+    general = all_config.get('general', {})
+    console.print("\n[bold cyan]General:[/bold cyan]")
+    for key, value in general.items():
+        console.print(f"  {key}: {value}")
+    
+    console.print(f"\n[dim]Config file: {cfg.config_file}[/dim]")
+
+
+@config.command('get')
+@click.argument('key')
+def get_config_value(key):
+    """Get a specific configuration value."""
+    cfg = get_config()
+    value = cfg.get(key)
+    if value is not None:
+        console.print(f"[cyan]{key}[/cyan] = [bold]{value}[/bold]")
+    else:
+        console.print(f"[red]Key not found:[/red] {key}")
 
 
 @cli.command()

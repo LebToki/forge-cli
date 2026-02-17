@@ -62,7 +62,7 @@ export function glassPanel(content: string, title?: string): string {
     margin: 1,
     borderStyle: 'round',
     borderColor: 'cyan',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: '#1a1a2e',
     title: title ? gradient(['#8ec5fc', '#e0c3fc'])(title) : undefined,
     titleAlignment: 'center'
   });

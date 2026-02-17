@@ -1,5 +1,4 @@
-import React from 'react';
-import { Heart, Sparkles, Github, Book } from 'lucide-react';
+import { Icon } from '@iconify/react';
 import { motion } from 'framer-motion';
 
 export const Footer: React.FC = () => {
@@ -12,7 +11,7 @@ export const Footer: React.FC = () => {
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center space-x-1">
           <span>Made with</span>
-          <Heart size={12} className="text-red-400 animate-pulse" fill="#f87171" />
+          <Icon icon="lucide:heart" width="12" height="12" className="text-red-400 animate-pulse" />
           <span>by</span>
           <a 
             href="https://github.com/LebToki" 
@@ -40,10 +39,10 @@ export const Footer: React.FC = () => {
             rel="noopener noreferrer"
             className="hover:text-white/60 transition-colors flex items-center"
           >
-            <Github size={12} className="mr-1" /> GitHub
+            <Icon icon="lucide:github" width="12" height="12" className="mr-1" /> GitHub
           </a>
           <div className="flex items-center space-x-1 border-l border-glass-border pl-4">
-            <Sparkles size={12} className="text-primary-400" />
+            <Icon icon="lucide:sparkles" width="12" height="12" className="text-primary-400" />
             <span>Powered by</span>
             <a 
               href="https://deepseek.com" 

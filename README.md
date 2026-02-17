@@ -54,17 +54,29 @@
 forge config set deepseek.api_key YOUR_KEY
 forge config set github.token YOUR_TOKEN
 
+# Check configuration
+forge config list
+
 # Ask questions about your code
 forge ask "What does this function do?" --file src/main.py
 
-# Fix bugs and open PRs
-forge task "Fix the login bug and create a pull request"
+# File system operations
+forge fs ls                    # List directory contents
+forge fs cat path/to/file.py   # Display file with syntax highlighting
+forge fs search "*.py"         # Search for files
 
-# Generate tests
-forge task "Write unit tests for the user service"
-
-# Refactor code
-forge task "Convert this callback to async/await" --file api/client.js
+# GitHub integration
+forge github auth --token YOUR_TOKEN    # Authenticate with GitHub
+forge github list                       # List your repositories
+forge github clone owner/repo           # Clone a repository
+forge github status                     # Show git status
+forge github commit "Your commit msg"  # Commit changes
+forge github push                       # Push to remote
+forge github pull                       # Pull from remote
+forge github pr-list owner/repo        # List pull requests
+forge github pr-create "PR Title" -r owner/repo -h feature-branch -b main
+forge github issue-list owner/repo      # List issues
+forge github issue-create "Issue Title" -r owner/repo -B "Description"
 ```
 
 ---
